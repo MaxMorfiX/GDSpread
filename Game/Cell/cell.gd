@@ -18,7 +18,22 @@ func _ready() -> void:
 		$BlockContainers/BlockContainer2,
 		$BlockContainers/BlockContainer3,
 	]
+	
 	cycle_node = get_node("Cycle")
+
+
+func init(containers_to_show: Array) -> void:
+	
+	max_energy = 0
+		
+	for i in range(containers_to_show.size() - 1, -1, -1):
+		if containers_to_show[i] == false:
+			var container = block_container_nodes[i]
+			container.queue_free()
+			block_container_nodes.pop_at(i)
+		else:
+			max_energy += 1
+
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton \
