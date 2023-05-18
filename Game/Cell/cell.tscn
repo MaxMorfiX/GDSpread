@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://c352nfkme7rry"]
+
+[ext_resource type="Script" path="res://Game/Cell/cell.gd" id="1_5th6c"]
+[ext_resource type="Texture2D" uid="uid://da5cqxlo0i0xs" path="res://Game/Cell/cellCenter.png" id="2_nxjg6"]
+[ext_resource type="Texture2D" uid="uid://dyptw6nt816x8" path="res://Game/Cell/blockContainer.png" id="3_fwvs8"]
+[ext_resource type="Texture2D" uid="uid://dujufuvuoijbq" path="res://Game/Cell/cycle.png" id="4_v401w"]
+[ext_resource type="Texture2D" uid="uid://cnw1fy87sm7w6" path="res://Game/Cell/cellBorder.png" id="5_ddlmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkjn7"]
+size = Vector2(360, 360)
+
+[node name="Cell" type="Area2D"]
+script = ExtResource("1_5th6c")
+
+[node name="CellCenter" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+texture = ExtResource("2_nxjg6")
+
+[node name="BlockContainers" type="Node2D" parent="."]
+
+[node name="BlockContainer0" type="Sprite2D" parent="BlockContainers"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(0, -120)
+texture = ExtResource("3_fwvs8")
+
+[node name="BlockContainer1" type="Sprite2D" parent="BlockContainers"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(-120, 0)
+texture = ExtResource("3_fwvs8")
+
+[node name="BlockContainer2" type="Sprite2D" parent="BlockContainers"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(120, 0)
+texture = ExtResource("3_fwvs8")
+
+[node name="BlockContainer3" type="Sprite2D" parent="BlockContainers"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+position = Vector2(0, 120)
+texture = ExtResource("3_fwvs8")
+
+[node name="Cycle" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+texture = ExtResource("4_v401w")
+
+[node name="CellBorder" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+texture = ExtResource("5_ddlmj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nkjn7")
