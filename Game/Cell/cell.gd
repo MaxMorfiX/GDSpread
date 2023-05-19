@@ -1,4 +1,5 @@
 extends Area2D
+class_name Cell
 var Block = preload('res://Game/Block/block.tscn')
 
 
@@ -22,7 +23,7 @@ func _ready() -> void:
 	cycle_node = get_node("Cycle")
 
 
-func init(containers_to_show: Array) -> void:
+func set_block_containers(containers_to_show: Array) -> void:
 	
 	max_energy = 0
 		

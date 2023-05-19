@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://4s77o3xel6tj"]
+[gd_scene load_steps=3 format=3 uid="uid://4s77o3xel6tj"]
 
 [ext_resource type="Script" path="res://Game/Main/game.gd" id="1_jvlg8"]
+[ext_resource type="Script" path="res://Game/Main/map_generator.gd" id="2_sjlhw"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jvlg8")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("2_sjlhw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
