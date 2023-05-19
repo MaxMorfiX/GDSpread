@@ -25,7 +25,7 @@ func generate_map(size: int) -> Array:
 	
 	var camera_pos = Vector2((size - 1)*step_size/2, (size - 1)*step_size/2)
 	camera.position = camera_pos
-	var camera_zoom = size*step_size*4.5e-5
+	var camera_zoom = 6e2/(size*step_size)
 	print(camera_zoom)
 	camera.zoom = Vector2(camera_zoom, camera_zoom)
 	
