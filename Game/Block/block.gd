@@ -7,42 +7,30 @@ const speed = 300
 
 @onready var sprite: Sprite2D = get_node("Sprite2D")
 
-enum States {IN_THE_CELL, FLYING}
-var state : int = States.IN_THE_CELL
+var is_flying : bool = false
 
 var player : int = 0
 var velocity: Vector2
 var distance_flew = 0
 
-func _process(delta: float) -> void:
-	match state:
-		States.IN_THE_CELL:
-			process_in_the_cell(delta)
-		States.FLYING:
-			process_flying(delta)
-			
-
-func process_in_the_cell(_delta: float) -> void:
-	pass
-
-func process_flying(delta: float) -> void:
-	
-	var offset := velocity*delta
-	
-	position += offset
-	distance_flew += offset.length()
+func _physics_process(delta: float) -> void:
+	if is_flying:
+		var offset := velocity*delta
+		
+		position += offset
+		distance_flew += offset.length()
 
 func throw(direction: Vector2) -> Block:
 	velocity = direction*speed
-	state = States.FLYING
+	is_flying = true
 	return self
 	
 
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if state == States.FLYING && area is Cell && distance_flew > 30:
-		state = States.IN_THE_CELL
+	if is_flying && area is Cell && distance_flew > 30:
+		is_flying = false
 		distance_flew = 0
 #		print("area entered, cell energy: " + str(area.energy))
 		call_deferred("add_to_cell", area)
@@ -58,4 +46,4 @@ func set_player(player_id: int):
 	if sprite == null:
 		call_deferred("set_player", player_id)
 		return
-	sprite.self_modulate = GameManager.players_colors[player_id]
+	sprite.self_modulate = Game.players_colors[player_id]
