@@ -51,6 +51,7 @@ func add_block(block: Block) -> void:
 	block.position = Vector2()
 	
 	set_player(block.player)
+	print("block player: " + str(block.player))
 	
 	energy+=1
 	

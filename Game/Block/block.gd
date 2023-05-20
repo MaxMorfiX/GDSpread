@@ -53,9 +53,9 @@ func add_to_cell(cell: Cell) -> void:
 
 func set_player(player_id: int):
 	
+	player = player_id
+	
 	if sprite == null:
 		call_deferred("set_player", player_id)
 		return
-	
-	player = player_id
 	sprite.self_modulate = PlayersManager.players_colors[player_id]
