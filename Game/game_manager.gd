@@ -1,15 +1,11 @@
 extends Node
 
-var players_colors: Array[Color] = [
-	Color(127, 0, 255),
-	Color(0, 255, 0),
-	Color(255, 0, 0),
-]
+var Player = preload('res://Game/player.gd')
 
-var players_active: Array[bool] = [
-	true,
-	true,
-	true
+var players: Array[Player] = [
+	Player.new(Color(127, 0, 255)),
+	Player.new(Color(0, 255, 0)),
+	Player.new(Color(255, 0, 0))
 ]
 
 enum State {PLAYER_MOVE, EXPLOSIONS}
@@ -37,7 +33,7 @@ func _process(delta: float) -> void:
 
 func check_next_player():
 	
-	var game_node = $"/root/MainGame"
+	var game_node = get_tree().current_scene
 	
 	return game_node.flying_blocks_container.get_children().size() == 0
 		
@@ -46,8 +42,8 @@ func next_player():
 	
 	curr_player += 1
 	
-	if curr_player >= players_active.size() - 1:
+	if curr_player >= players.size():
 		curr_player = 0
 	
-	if !players_active[curr_player]:
+	if !players[curr_player].is_active:
 		next_player()

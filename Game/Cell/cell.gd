@@ -44,6 +44,8 @@ func on_click() -> void:
 	
 	if Game.state != Game.State.PLAYER_MOVE:
 		return
+	if energy > 0 and Game.curr_player != player:
+		return
 	
 	Game.cell_clicked()
 	
@@ -85,7 +87,7 @@ func explode() -> void:
 func set_player(player_id: int) -> void:
 	player = player_id
 	
-	cycle_node.self_modulate = Game.players_colors[player_id]
+	cycle_node.self_modulate = Game.players[player_id].color
 		
 	for i in range(0, energy):
 		var container: BlockContainer = block_container_nodes[i]
