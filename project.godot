@@ -14,3 +14,7 @@ config/name="GDSpread"
 run/main_scene="res://Game/Main/game.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayersManager="*res://Game/players_manager.gd"

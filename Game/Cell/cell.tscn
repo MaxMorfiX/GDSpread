@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctqoqvv6qspqk"]
 
-[ext_resource type="Script" path="res://Game/Cell/cell.gd" id="1_5th6c"]
+[ext_resource type="Script" path="res://Game/Cell/cell.gd" id="1_3vhpw"]
 [ext_resource type="PackedScene" uid="uid://q11v8jukpljn" path="res://Game/Cell/BlockContainer/block_container.tscn" id="2_bwy67"]
 [ext_resource type="Texture2D" uid="uid://da5cqxlo0i0xs" path="res://Game/Cell/cellCenter.png" id="2_nxjg6"]
 [ext_resource type="Texture2D" uid="uid://dujufuvuoijbq" path="res://Game/Cell/cycle.png" id="4_v401w"]
@@ -10,7 +10,7 @@
 size = Vector2(360, 360)
 
 [node name="Cell" type="Area2D"]
-script = ExtResource("1_5th6c")
+script = ExtResource("1_3vhpw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nkjn7")

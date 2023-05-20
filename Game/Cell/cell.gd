@@ -1,16 +1,17 @@
 extends Area2D
 class_name Cell
+
 var Block = preload('res://Game/Block/block.tscn')
 var BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
 
 
-
+var player : int = 0
 var energy = 0
 var max_energy = 4
 
 
 
-@onready var cycle_node := get_node("Cycle")
+@onready var cycle_node : Sprite2D = get_node("Cycle")
 @onready var flying_blocks_container : Node2D = $"../../FlyingBlocksContainer"
 @onready var block_container_nodes : Array [Node] = [
 	$BlockContainers/BlockContainer0,
@@ -40,12 +41,16 @@ func _input_event(_viewport, event, _shape_idx):
 		self.on_click()
 
 func on_click() -> void:
-	add_block(Block.instantiate())
+	var block: Block = Block.instantiate()
+	block.set_player(PlayersManager.curr_player)
+	add_block(block)
 
 func add_block(block: Block) -> void:
 	
 	block_container_nodes[energy].add_child(block)
 	block.position = Vector2()
+	
+	set_player(block.player)
 	
 	energy+=1
 	
@@ -61,7 +66,7 @@ func explode() -> void:
 	
 	energy -= max_energy
 	for container in block_container_nodes:
-		var block = container.get_children()[0]
+		var block = container.get_block()
 		
 		if block == null:
 			print("error")
@@ -70,4 +75,14 @@ func explode() -> void:
 		container.remove_child(block)
 		block.position = container.global_position
 		flying_blocks_container.add_child(block)
+	
+func set_player(player_id: int) -> void:
+	player = player_id
+	
+	cycle_node.self_modulate = PlayersManager.players_colors[player_id]
+		
+	for i in range(0, energy):
+		var container: BlockContainer = block_container_nodes[i]
+		var block: Block = container.get_block()
+		block.set_player(player_id)
 	

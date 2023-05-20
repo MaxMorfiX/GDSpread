@@ -5,9 +5,12 @@ var Cell = preload('res://Game/Cell/cell.tscn')
 
 const speed = 300
 
+@onready var sprite: Sprite2D = get_node("Sprite2D")
+
 enum States {IN_THE_CELL, FLYING}
 var state : int = States.IN_THE_CELL
 
+var player : int = 0
 var velocity: Vector2
 var distance_flew = 0
 
@@ -47,3 +50,12 @@ func _on_area_entered(area: Area2D) -> void:
 func add_to_cell(cell: Cell) -> void:
 	get_parent().remove_child(self)
 	cell.add_block(self)
+
+func set_player(player_id: int):
+	
+	if sprite == null:
+		call_deferred("set_player", player_id)
+		return
+	
+	player = player_id
+	sprite.self_modulate = PlayersManager.players_colors[player_id]
