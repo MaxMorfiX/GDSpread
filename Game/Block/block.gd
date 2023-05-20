@@ -58,4 +58,4 @@ func set_player(player_id: int):
 	if sprite == null:
 		call_deferred("set_player", player_id)
 		return
-	sprite.self_modulate = PlayersManager.players_colors[player_id]
+	sprite.self_modulate = GameManager.players_colors[player_id]

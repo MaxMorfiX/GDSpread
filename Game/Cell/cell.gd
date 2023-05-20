@@ -42,7 +42,7 @@ func _input_event(_viewport, event, _shape_idx):
 
 func on_click() -> void:
 	var block: Block = Block.instantiate()
-	block.set_player(PlayersManager.curr_player)
+	block.set_player(GameManager.curr_player)
 	add_block(block)
 
 func add_block(block: Block) -> void:
@@ -51,7 +51,6 @@ func add_block(block: Block) -> void:
 	block.position = Vector2()
 	
 	set_player(block.player)
-	print("block player: " + str(block.player))
 	
 	energy+=1
 	
@@ -80,7 +79,7 @@ func explode() -> void:
 func set_player(player_id: int) -> void:
 	player = player_id
 	
-	cycle_node.self_modulate = PlayersManager.players_colors[player_id]
+	cycle_node.self_modulate = GameManager.players_colors[player_id]
 		
 	for i in range(0, energy):
 		var container: BlockContainer = block_container_nodes[i]

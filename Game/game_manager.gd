@@ -6,6 +6,8 @@ var players_colors: Array[Color] = [
 	Color(255, 0, 0),
 ]
 
+enum State {PLAYER_MOVE, CONSEQUENCE}
+
 var curr_player: int = 0
 
 func _input(ev):

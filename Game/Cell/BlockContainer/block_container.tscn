@@ -6,6 +6,5 @@
 [node name="BlockContainer" type="Sprite2D"]
 self_modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-position = Vector2(-4, 6)
 texture = ExtResource("1_ur6kr")
 script = ExtResource("2_hn24r")
