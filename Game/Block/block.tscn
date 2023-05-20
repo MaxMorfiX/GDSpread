@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cans7qido5nxg"]
 
 [ext_resource type="Texture2D" uid="uid://qdcy2w7cavm1" path="res://Game/Block/block.png" id="1_dyv13"]
-[ext_resource type="Script" path="res://Game/Block/block.gd" id="1_mc1yp"]
+[ext_resource type="Script" path="res://Game/Block/block.gd" id="1_nrwrd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgixu"]
 size = Vector2(104, 104)
 
 [node name="block" type="Area2D"]
-script = ExtResource("1_mc1yp")
+script = ExtResource("1_nrwrd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
