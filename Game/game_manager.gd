@@ -51,7 +51,7 @@ func next_player():
 	var bg: TextureRect = get_tree().current_scene.get_node("BackgroundCanvas/Background")
 	
 	var color: Color = players[curr_player].color
-	color = saturate_color(color, 1.6)
+	color = saturate_color(color, 1.5)
 	
 	bg.self_modulate = color
 
