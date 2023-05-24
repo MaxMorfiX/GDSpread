@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5mcvl1yitayj"]
+
+[ext_resource type="Theme" uid="uid://45nuxp4rado5" path="res://Menus/main_theme.tres" id="1_0hvoa"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_0hvoa")
+
+[node name="Button" type="Button" parent="Control"]
+offset_left = 326.0
+offset_top = 234.0
+offset_right = 444.0
+offset_bottom = 269.0
+focus_mode = 0
+text = "PLAY"
