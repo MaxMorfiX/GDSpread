@@ -26,8 +26,9 @@ func _input(ev):
 func cell_clicked():
 	state = State.EXPLOSIONS
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if state != State.EXPLOSIONS: return
+	if get_tree().current_scene.name != "MainGame": return
 	
 	if check_next_player(): next_player()
 
