@@ -25,7 +25,6 @@ texture = ExtResource("2_eix43")
 stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.2, 0.2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 

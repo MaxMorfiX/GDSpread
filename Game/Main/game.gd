@@ -14,8 +14,8 @@ var Player = preload('res://Game/player.gd')
 
 var players: Array[Player] = [
 	Player.new(Color(12, 0, 255, 255)),
+	Player.new(Color(255, 0, 0, 255)),
 	Player.new(Color(0, 255, 0, 255)),
-	Player.new(Color(255, 0, 0, 255))
 ]
 
 var curr_turn : int = 0
@@ -26,6 +26,9 @@ var state: State = State.PLAYER_MOVE
 var curr_player: int = 0
 
 func _input(ev):
+	
+	if !OS.is_debug_build(): return
+	
 	if ev is InputEventKey and not ev.echo:
 		match ev.keycode:
 			KEY_1:
@@ -105,7 +108,7 @@ func handle_players():
 		
 		var player = players[pId]
 		
-		print("player " + str(pId) + " is " + str(player.is_active))
+#		print("player " + str(pId) + " is " + str(player.is_active))
 		
 		if player.is_active:
 			players_active += 1
