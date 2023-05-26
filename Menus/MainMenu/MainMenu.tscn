@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://7mxrfjphk53t"]
+[gd_scene load_steps=11 format=3 uid="uid://7mxrfjphk53t"]
 
 [ext_resource type="Script" path="res://Menus/MainMenu/main_menu.gd" id="1_sewdd"]
-[ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_g16ju"]
-[ext_resource type="Script" path="res://Menus/MainMenu/background.gd" id="3_coefl"]
+[ext_resource type="PackedScene" uid="uid://bf0o1q3l0l201" path="res://Menus/Background/background.tscn" id="2_ik6no"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f33n2"]
 bg_color = Color(0.308035, 0.1729, 0.91, 1)
@@ -103,7 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 shortcut = SubResource("Shortcut_f100p")
-text = "PLAY"
+text = "NEW GAME"
 
 [node name="GameLogo" type="Label" parent="Control"]
 layout_mode = 1
@@ -136,20 +135,7 @@ text = "QUIT"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="BackgroundCanvas" type="CanvasLayer" parent="Camera2D"]
-layer = -1
-
-[node name="Background" type="TextureRect" parent="Camera2D/BackgroundCanvas"]
-z_as_relative = false
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_g16ju")
-stretch_mode = 1
-script = ExtResource("3_coefl")
+[node name="BackgroundCanvas" parent="Camera2D" instance=ExtResource("2_ik6no")]
 
 [connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/QuitButton" to="." method="_on_quit_button_pressed"]

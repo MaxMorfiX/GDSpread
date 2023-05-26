@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf0o1q3l0l201"]
+
+[ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_6ajk0"]
+[ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_uh2qm"]
+
+[node name="BackgroundCanvas" type="CanvasLayer"]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="."]
+z_as_relative = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6ajk0")
+stretch_mode = 1
+script = ExtResource("2_uh2qm")

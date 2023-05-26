@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgegl117cy0xe"]
+
+[ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_g7iaw"]
+[ext_resource type="PackedScene" uid="uid://bf0o1q3l0l201" path="res://Menus/Background/background.tscn" id="2_0kmde"]
+[ext_resource type="Theme" uid="uid://ed71uvkuo1gj" path="res://Menus/main_theme.tres" id="3_o168j"]
+
+[node name="NewGameEditor" type="Node2D"]
+script = ExtResource("1_g7iaw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_o168j")
+
+[node name="MapSize" type="SpinBox" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -73.5
+offset_right = 206.0
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 1.0
+max_value = 256.0
+value = 3.0
+alignment = 1
+prefix = "Map Size:"
+select_all_on_focus = true
+
+[node name="PlayButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = 114.0
+offset_right = 142.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "PLAY"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BackgroundCanvas" parent="Camera2D" instance=ExtResource("2_0kmde")]
+
+[connection signal="value_changed" from="Control/MapSize" to="." method="_on_map_size_value_changed"]
+[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
