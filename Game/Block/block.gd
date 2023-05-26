@@ -46,4 +46,4 @@ func set_player(player_id: int):
 	if sprite == null:
 		call_deferred("set_player", player_id)
 		return
-	sprite.self_modulate = Game.players[player_id].color
+	sprite.self_modulate = get_tree().current_scene.players[player_id].color

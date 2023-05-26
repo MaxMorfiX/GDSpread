@@ -42,15 +42,15 @@ func _input_event(_viewport, event, _shape_idx):
 
 func on_click() -> void:
 	
-	if Game.state != Game.State.PLAYER_MOVE:
+	if get_tree().current_scene.state != get_tree().current_scene.State.PLAYER_MOVE:
 		return
-	if energy > 0 and Game.curr_player != player:
+	if energy > 0 and get_tree().current_scene.curr_player != player:
 		return
 	
-	Game.cell_clicked()
+	get_tree().current_scene.cell_clicked()
 	
 	var block: Block = Block.instantiate()
-	block.set_player(Game.curr_player)
+	block.set_player(get_tree().current_scene.curr_player)
 	add_block(block)
 
 func add_block(block: Block) -> void:
@@ -87,7 +87,7 @@ func explode() -> void:
 func set_player(player_id: int) -> void:
 	player = player_id
 	
-	cycle_node.self_modulate = Game.players[player_id].color
+	cycle_node.self_modulate = get_tree().current_scene.players[player_id].color
 		
 	for i in range(0, energy):
 		var container: BlockContainer = block_container_nodes[i]

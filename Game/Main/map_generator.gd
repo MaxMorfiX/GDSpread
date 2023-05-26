@@ -4,9 +4,9 @@ var Cell = preload('res://Game/Cell/cell.tscn')
 
 var step_size = 360*1.5
 
-func generate_map(size: int) -> Array:
+func generate_map(size: int) -> Array[Cell]:
 	
-	var cells = []
+	var cells : Array[Cell] = []
 	
 	for raw_x in range(0, size):
 		for raw_y in range(0, size):
@@ -26,7 +26,7 @@ func generate_map(size: int) -> Array:
 	var camera_pos = Vector2((size - 1)*step_size/2, (size - 1)*step_size/2)
 	camera.position = camera_pos
 	var camera_zoom = 6e2/(size*step_size)
-	print(camera_zoom)
+	#print(camera_zoom)
 	camera.zoom = Vector2(camera_zoom, camera_zoom)
 	
 	return cells

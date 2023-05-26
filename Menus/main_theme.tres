@@ -60,5 +60,5 @@ Button/constants/outline_size = 0
 Button/styles/hover = SubResource("StyleBoxFlat_f33n2")
 Button/styles/normal = SubResource("StyleBoxFlat_ddwj7")
 Button/styles/pressed = SubResource("StyleBoxFlat_5qoxl")
-Label/font_sizes/font_size = 90
+Label/font_sizes/font_size = 80
 Label/styles/normal = SubResource("StyleBoxFlat_3f5ty")

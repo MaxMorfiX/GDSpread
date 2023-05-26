@@ -21,7 +21,7 @@ Game="*res://Game/game_manager.gd"
 
 [display]
 
-window/size/mode=4
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [rendering]
