@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://4s77o3xel6tj"]
+[gd_scene load_steps=6 format=3 uid="uid://4s77o3xel6tj"]
 
 [ext_resource type="Script" path="res://Game/Main/game.gd" id="1_jvlg8"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_eix43"]
 [ext_resource type="Script" path="res://Game/Main/map_generator.gd" id="2_sjlhw"]
+[ext_resource type="Script" path="res://Game/Main/game_win_menu.gd" id="4_6kf1a"]
 [ext_resource type="Theme" uid="uid://ed71uvkuo1gj" path="res://Menus/main_theme.tres" id="4_fc2ic"]
 
 [node name="MainGame" type="Node2D"]
@@ -39,6 +40,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("4_fc2ic")
+script = ExtResource("4_6kf1a")
 
 [node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/GameWinMenu"]
 layout_mode = 1
@@ -72,7 +74,7 @@ grow_vertical = 2
 focus_mode = 0
 text = "GO TO MENU"
 
-[node name="Label" type="Label" parent="Camera2D/CanvasLayer/GameWinMenu"]
+[node name="GameWinText" type="Label" parent="Camera2D/CanvasLayer/GameWinMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,3 +95,6 @@ vertical_alignment = 1
 script = ExtResource("2_sjlhw")
 
 [node name="FlyingBlocksContainer" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Camera2D/CanvasLayer/GameWinMenu/RestartButton" to="Camera2D/CanvasLayer/GameWinMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/GameWinMenu/MainMenuButton" to="Camera2D/CanvasLayer/GameWinMenu" method="_on_main_menu_button_pressed"]

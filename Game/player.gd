@@ -1,4 +1,3 @@
-extends Node
 class_name Player
 
 var color: Color = Color()

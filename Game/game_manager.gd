@@ -1,12 +1,15 @@
 extends Node
 
 var Player = preload('res://Game/player.gd')
+var Cell = preload('res://Game/Cell/cell.tscn')
 
 var players: Array[Player] = [
 	Player.new(Color(12, 0, 255, 255)),
 	Player.new(Color(0, 255, 0, 255)),
 	Player.new(Color(255, 0, 0, 255))
 ]
+
+var curr_turn : int = 0
 
 enum State {PLAYER_MOVE, EXPLOSIONS}
 var state: State = State.PLAYER_MOVE
@@ -31,6 +34,7 @@ func _process(_delta: float) -> void:
 	if get_tree().current_scene.name != "MainGame": return
 	
 	if check_next_player(): next_player()
+	handle_players()
 
 func check_next_player():
 	
@@ -45,6 +49,7 @@ func next_player():
 	
 	if curr_player >= players.size():
 		curr_player = 0
+		curr_turn += 1
 	
 	if !players[curr_player].is_active:
 		next_player()
@@ -55,6 +60,55 @@ func next_player():
 	color = saturate_color(color, 1.5)
 	
 	bg.self_modulate = color
+
+func handle_players():
+	
+	#yes I know that this code is complex and shitty but I'm too lazy now to fix it
+	
+	if curr_turn < 1: return
+	
+	var cells : Array[Node] = get_node('/root/MainGame/Map').get_children()
+	
+	var players_score: Array[int] = []
+	
+	for i in range(players.size()): #initializing an array with specified size
+		players_score.append(0) 
+	
+	for cell in cells: #counting score (count of cells) of players
+		if cell.energy < 1: continue
+		
+		players_score[cell.player] += 1	
+		
+#	print(players_score)
+	
+	for pId in range(players_score.size()): #player dies if there're no his cells
+		if players_score[pId] == 0:
+			
+			players[pId].is_active = false
+			
+	var blocks : Array[Node] = get_node('/root/MainGame/FlyingBlocksContainer').get_children()
+			
+	for block in blocks: #counting score (count of cells) of players
+		players[block.player].is_active = true
+			
+	var players_active : int = 0
+	var last_player : int = 0 #only used when some player won the game
+	
+	for pId in range(players.size()):
+		
+		var player = players[pId]
+		
+#		print("player " + str(pId) + " is " + str(player.is_active))
+		
+		if player.is_active:
+			players_active += 1
+			last_player = pId
+			
+#	print("players left: " + str(players_active))
+	
+	if players_active < 2:
+		var game_win_menu = get_node("/root/MainGame/Camera2D/CanvasLayer/GameWinMenu")
+		game_win_menu.win_player(last_player)
 
 #function below was written by ChatGPT
 func saturate_color(color: Color, saturation_factor: float) -> Color:
