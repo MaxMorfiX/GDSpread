@@ -77,7 +77,9 @@ func explode() -> void:
 		var block = container.get_block()
 		
 		if block == null:
-			print("error")
+			
+			
+			("error")
 		
 		block.throw(container.relative_raw_position)
 		container.remove_child(block)

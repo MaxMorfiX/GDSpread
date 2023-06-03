@@ -12,7 +12,7 @@ func _ready() -> void:
 		players.append(Player.new(player.color))
 	
 	cells = get_node("Map").generate_map(GameSettings.map_size)
-	get_node('BackgroundCanvas/Background').self_modulate = saturate_color(players[curr_player].color, 1.6)
+	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 
 var Player = preload('res://Game/player.gd')
 
@@ -69,7 +69,7 @@ func next_player():
 	var bg: TextureRect = get_tree().current_scene.get_node("BackgroundCanvas/Background")
 	
 	var color: Color = players[curr_player].color
-	color = saturate_color(color, 1.5)
+	color = saturate_player_color(color)
 	
 	bg.self_modulate = color
 
@@ -121,24 +121,10 @@ func handle_players():
 		game_win_menu.win_player(last_player)
 
 #function below was written by ChatGPT
-func saturate_color(color: Color, saturation_factor: float) -> Color:
-	var r = color.r
-	var g = color.g
-	var b = color.b
-
-	var max_component = max(r, g, b)
-	var min_component = min(r, g, b)
-	var delta = max_component - min_component
-
-	var saturation = delta / max_component
-
-	# Calculate the saturation adjustment
-	var adjustment = (saturation_factor - 1.0) * saturation
-
-	r += adjustment * (max_component - r)
-	g += adjustment * (max_component - g)
-	b += adjustment * (max_component - b)
+func saturate_player_color(color: Color) -> Color:
 	
-#	print("was: " + str(color) + ", became: " + str(Color(r, g, b, color.a)))
-
-	return Color(r, g, b, color.a)
+	var col = Color(color)
+	
+	col.s -= GameSettings.player_color_saturation_factor
+	
+	return col

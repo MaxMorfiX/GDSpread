@@ -14,3 +14,4 @@ func _on_players_count_value_changed(value: int) -> void:
 func _ready() -> void:
 	$Control/MapSize.value = GameSettings.map_size
 	$Control/PlayersCount.value = GameSettings.players_count
+	

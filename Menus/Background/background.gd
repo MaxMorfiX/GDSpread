@@ -1,7 +1,7 @@
 extends TextureRect
 
 var hue = 0.0
-var saturation = 0.5
+var saturation = 1 - GameSettings.player_color_saturation_factor
 var value = 1.0
 var speed = 0.05
 
