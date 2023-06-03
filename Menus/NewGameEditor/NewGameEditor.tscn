@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgegl117cy0xe"]
+[gd_scene load_steps=6 format=3 uid="uid://dgegl117cy0xe"]
 
 [ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_g7iaw"]
 [ext_resource type="PackedScene" uid="uid://bf0o1q3l0l201" path="res://Menus/Background/background.tscn" id="2_0kmde"]
 [ext_resource type="Theme" uid="uid://ed71uvkuo1gj" path="res://Menus/main_theme.tres" id="3_o168j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh3j5"]
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_qv1mm"]
+font_size = 140
 
 [node name="NewGameEditor" type="Node2D"]
 script = ExtResource("1_g7iaw")
@@ -51,9 +57,9 @@ offset_right = 420.0
 offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
-min_value = 1.0
-max_value = 256.0
-value = 3.0
+min_value = 2.0
+max_value = 16.0
+value = 2.0
 alignment = 1
 prefix = "Players Count:"
 select_all_on_focus = true
@@ -73,6 +79,23 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 text = "PLAY"
+
+[node name="NewGameText" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = -100.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yh3j5")
+text = "New Game
+"
+label_settings = SubResource("LabelSettings_qv1mm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

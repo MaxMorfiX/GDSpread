@@ -5,11 +5,7 @@ var Player = preload("res://Game/player.gd")
 var rng = RandomNumberGenerator.new()
 var player_colors_seed = 1234
 
-var players : Array[Player] = [
-	Player.new(Color8(0, 0, 255)),
-	Player.new(Color8(255, 0, 0)),
-	Player.new(Color8(0, 255, 0))
-]
+var players : Array[Player]
 var map_size : int = 3
 
 var players_count : int :
@@ -17,6 +13,9 @@ var players_count : int :
 		players = create_players(value)
 	get:
 		return players.size()
+
+func _init() -> void:
+	players_count = 2
 
 func get_player_color(player_id: int, players_in_game: int) -> Color:
 
@@ -26,7 +25,7 @@ func get_player_color(player_id: int, players_in_game: int) -> Color:
 	
 	var color = Color.from_hsv(hue, 1, 1, 1)
 	
-	print("player id: " + str(player_id) + ", players in game: " + str(players_in_game))
+	print(color)
 	
 	return color
 

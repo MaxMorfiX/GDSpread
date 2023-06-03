@@ -116,6 +116,8 @@ offset_bottom = -100.0
 grow_horizontal = 2
 text = "Spread"
 label_settings = SubResource("LabelSettings_0ext5")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuitButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -132,6 +134,22 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 text = "QUIT"
+
+[node name="DeveloperNickname" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.5
+offset_top = 270.0
+offset_right = 145.5
+offset_bottom = 315.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Made by MaxMorfiX"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
