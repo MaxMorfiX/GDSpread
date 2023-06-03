@@ -7,13 +7,16 @@ var Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
 func _ready() -> void:
-	print_debug(players[0].color)
+	
+	for player in GameSettings.players:
+		players.append(Player.new(player.color))
+	
 	cells = get_node("Map").generate_map(GameSettings.map_size)
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_color(players[curr_player].color, 1.6)
 
 var Player = preload('res://Game/player.gd')
 
-@onready var players : Array[Player] = GameSettings.players.duplicate(true)
+var players : Array[Player]
 
 var curr_turn : int = 0
 
