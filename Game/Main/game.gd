@@ -65,6 +65,10 @@ func next_player():
 	
 	if !players[curr_player].is_active:
 		next_player()
+		
+	if GameSettings.gamemode == GameSettings.GAMEMODE.BLOCKED_CELLS:
+		if !check_can_player_place_a_block(curr_player):
+			next_player()
 	
 	var bg: TextureRect = get_tree().current_scene.get_node("BackgroundCanvas/Background")
 	
@@ -72,6 +76,17 @@ func next_player():
 	color = saturate_player_color(color)
 	
 	bg.self_modulate = color
+
+func check_can_player_place_a_block(pId: int):
+	for cell in cells:
+		if cell.is_blocked:
+			continue
+		if cell.player == pId:
+			return true
+		if cell.energy == 0:
+			return true
+	
+	return false
 
 func handle_players():
 	

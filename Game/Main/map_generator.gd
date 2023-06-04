@@ -35,14 +35,10 @@ func generate_map() -> Array[Cell]:
 	
 	if GameSettings.gamemode == GameSettings.GAMEMODE.BLOCKED_CELLS:
 		#checking if all cells are blocked
-		
-		var cells_not_blocked: int = 0
-		
+
 		for cell in cells:
-			if !cell.is_blocked: cells_not_blocked += 1
-		
-		if cells_not_blocked > 0:
-			return cells
+			if !cell.is_blocked:
+				return cells
 			
 		for child in get_children():
 			child.queue_free()
