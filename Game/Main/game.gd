@@ -75,7 +75,7 @@ func next_player():
 
 func handle_players():
 	
-	#yes I know that this code is complex and shitty but I'm too lazy now to fix it
+	#yes I know that this code is complex and shitty but I'm too lazy now to fix it for now
 	
 	if curr_turn < 1: return
 	

@@ -23,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_eix43")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -37,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("4_fc2ic")
+metadata/_edit_use_anchors_ = true
 
 [node name="GameButtons" type="Control" parent="Camera2D/CanvasLayer/Control"]
 unique_name_in_owner = true
@@ -45,22 +47,27 @@ anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameButtons"]
 layout_mode = 1
 offset_top = 15.0
 offset_right = 100.0
 offset_bottom = 100.0
+tooltip_text = "Restart the current game"
 focus_mode = 0
 text = "Rstrt"
+metadata/_edit_use_anchors_ = true
 
 [node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameButtons"]
 layout_mode = 1
 offset_top = 120.0
 offset_right = 100.0
 offset_bottom = 205.0
+tooltip_text = "Go to the main menu"
 focus_mode = 0
 text = "Home"
+metadata/_edit_use_anchors_ = true
 
 [node name="GameWinMenu" type="Control" parent="Camera2D/CanvasLayer/Control"]
 unique_name_in_owner = true
