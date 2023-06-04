@@ -1,8 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgegl117cy0xe"]
+[gd_scene load_steps=9 format=3 uid="uid://dgegl117cy0xe"]
 
 [ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_g7iaw"]
 [ext_resource type="PackedScene" uid="uid://bf0o1q3l0l201" path="res://Menus/Background/background.tscn" id="2_0kmde"]
 [ext_resource type="Theme" uid="uid://ed71uvkuo1gj" path="res://Menus/main_theme.tres" id="3_o168j"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_p6x2j"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_fj7el"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_dqy5o"]
+events = [SubResource("InputEventKey_p6x2j"), SubResource("InputEventKey_fj7el")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh3j5"]
 draw_center = false
@@ -79,6 +91,8 @@ offset_bottom = 234.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+shortcut = SubResource("Shortcut_dqy5o")
+shortcut_in_tooltip = false
 text = "PLAY"
 
 [node name="NewGameText" type="Label" parent="Control"]

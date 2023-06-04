@@ -28,9 +28,42 @@ stretch_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
-[node name="GameWinMenu" type="Control" parent="Camera2D/CanvasLayer"]
-visible = false
+[node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("4_fc2ic")
+
+[node name="GameButtons" type="Control" parent="Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameButtons"]
+layout_mode = 1
+offset_top = 15.0
+offset_right = 100.0
+offset_bottom = 100.0
+focus_mode = 0
+text = "Rstrt"
+
+[node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameButtons"]
+layout_mode = 1
+offset_top = 120.0
+offset_right = 100.0
+offset_bottom = 205.0
+focus_mode = 0
+text = "Home"
+
+[node name="GameWinMenu" type="Control" parent="Camera2D/CanvasLayer/Control"]
+visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,10 +71,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("4_fc2ic")
 script = ExtResource("4_6kf1a")
 
-[node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/GameWinMenu"]
+[node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,7 +89,7 @@ grow_vertical = 2
 focus_mode = 0
 text = "RESTART"
 
-[node name="MainMenuButton" type="Button" parent="Camera2D/CanvasLayer/GameWinMenu"]
+[node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -73,7 +105,7 @@ grow_vertical = 2
 focus_mode = 0
 text = "GO TO MENU"
 
-[node name="GameWinText" type="Label" parent="Camera2D/CanvasLayer/GameWinMenu"]
+[node name="GameWinText" type="Label" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,5 +127,7 @@ script = ExtResource("2_sjlhw")
 
 [node name="FlyingBlocksContainer" type="Node2D" parent="."]
 
-[connection signal="pressed" from="Camera2D/CanvasLayer/GameWinMenu/RestartButton" to="Camera2D/CanvasLayer/GameWinMenu" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/GameWinMenu/MainMenuButton" to="Camera2D/CanvasLayer/GameWinMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/HomeButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HomeButton" to="." method="_on_main_menu_button_pressed"]

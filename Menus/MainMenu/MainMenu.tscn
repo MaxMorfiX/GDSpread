@@ -102,6 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 shortcut = SubResource("Shortcut_f100p")
+shortcut_in_tooltip = false
 text = "NEW GAME"
 
 [node name="GameLogo" type="Label" parent="Control"]

@@ -1,16 +1,6 @@
 extends Control
 
-@onready var game_win_label: Label = $GameWinText
-
-
-func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene()
-	
-
-
-func _on_main_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file('res://Menus/MainMenu/MainMenu.tscn')
-	
+@onready var game_win_label: Label = $GameWinText	
 	
 func win_player(player: int) -> void:
 	
