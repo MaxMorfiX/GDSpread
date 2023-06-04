@@ -1,2 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+
+/[Tt]emp/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/

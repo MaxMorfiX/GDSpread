@@ -1,6 +1,6 @@
 extends Node
 
-const player_color_saturation_factor: float = 0.4
+const player_color_saturation_factor: float = 0.3
 
 var Player = preload("res://Game/player.gd")
 
@@ -14,7 +14,7 @@ var players_count : int :
 		return players.size()
 
 func _init() -> void:
-	players_count = 6
+	players_count = 2
 
 func generate_player_color(player_id: int, players_in_game: int) -> Color:
 	
