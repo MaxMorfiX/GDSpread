@@ -6,7 +6,9 @@ var step_size = 360*1.5
 
 var rng = RandomNumberGenerator.new()
 
-func generate_map(size: int) -> Array[Cell]:
+func generate_map() -> Array[Cell]:
+	
+	var size = GameSettings.map_size
 	
 	var cells : Array[Cell] = []
 	
@@ -30,6 +32,22 @@ func generate_map(size: int) -> Array[Cell]:
 	var camera_zoom = 6e2/(size*step_size)
 	#print(camera_zoom)
 	camera.zoom = Vector2(camera_zoom, camera_zoom)
+	
+	if GameSettings.gamemode == GameSettings.GAMEMODE.BLOCKED_CELLS:
+		#checking if all cells are blocked
+		
+		var cells_not_blocked: int = 0
+		
+		for cell in cells:
+			if !cell.is_blocked: cells_not_blocked += 1
+		
+		if cells_not_blocked > 0:
+			return cells
+			
+		for child in get_children():
+			child.queue_free()
+		
+		return generate_map()
 	
 	return cells
 

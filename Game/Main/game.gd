@@ -11,7 +11,7 @@ func _ready() -> void:
 	for player in GameSettings.players:
 		players.append(Player.new(player.color))
 	
-	cells = get_node("Map").generate_map(GameSettings.map_size)
+	cells = get_node("Map").generate_map()
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 
 var Player = preload('res://Game/player.gd')
@@ -76,6 +76,7 @@ func next_player():
 func handle_players():
 	
 	#yes I know that this code is complex and shitty but I'm too lazy now to fix it for now
+	#Yahoo it became more complex with this commit!
 	
 	if curr_turn < 1: return
 	
