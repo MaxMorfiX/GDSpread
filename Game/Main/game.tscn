@@ -39,6 +39,7 @@ mouse_filter = 1
 theme = ExtResource("4_fc2ic")
 
 [node name="GameButtons" type="Control" parent="Camera2D/CanvasLayer/Control"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -62,6 +63,7 @@ focus_mode = 0
 text = "Home"
 
 [node name="GameWinMenu" type="Control" parent="Camera2D/CanvasLayer/Control"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -127,7 +129,7 @@ script = ExtResource("2_sjlhw")
 
 [node name="FlyingBlocksContainer" type="Node2D" parent="."]
 
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/HomeButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HomeButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/RestartButton" to="." method="_restart_game"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/HomeButton" to="." method="_go_to_main_menu"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/RestartButton" to="." method="_restart_game"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HomeButton" to="." method="_go_to_main_menu"]

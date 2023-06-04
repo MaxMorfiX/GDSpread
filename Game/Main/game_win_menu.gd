@@ -9,4 +9,6 @@ func win_player(player: int) -> void:
 	
 	game_win_label.self_modulate = get_tree().current_scene.players[player].color
 	
+	%GameButtons.hide()
+	
 	show()

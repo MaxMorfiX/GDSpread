@@ -117,8 +117,7 @@ func handle_players():
 #	print("players left: " + str(players_active))
 	
 	if players_active < 2:
-		var game_win_menu = $Camera2D/CanvasLayer/Control/GameWinMenu
-		game_win_menu.win_player(last_player)
+		%GameWinMenu.win_player(last_player)
 
 #function below was written by ChatGPT
 func saturate_player_color(color: Color) -> Color:
@@ -129,10 +128,8 @@ func saturate_player_color(color: Color) -> Color:
 	
 	return col
 
-func _on_restart_button_pressed() -> void:
+func _restart_game() -> void:
 	get_tree().reload_current_scene()
-	
 
-
-func _on_main_menu_button_pressed() -> void:
+func _go_to_main_menu() -> void:
 	get_tree().change_scene_to_file('res://Menus/MainMenu/MainMenu.tscn')
