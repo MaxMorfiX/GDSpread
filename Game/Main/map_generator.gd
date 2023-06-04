@@ -47,6 +47,6 @@ func generate_cell(raw_x: int, raw_y: int) -> Cell:
 	if GameSettings.gamemode == GameSettings.GAMEMODE.BLOCKED_CELLS:
 		var block: float = rng.randf()
 		
-		if block < GameSettings.probability_block_gets_blocked: cell.block()
+		if block < GameSettings.blocked_cell_chance: cell.block()
 	
 	return cell

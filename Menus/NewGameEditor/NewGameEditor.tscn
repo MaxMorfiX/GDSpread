@@ -114,7 +114,7 @@ shortcut = SubResource("Shortcut_dqy5o")
 shortcut_in_tooltip = false
 text = "PLAY"
 
-[node name="OptionButton" type="OptionButton" parent="Control"]
+[node name="Gamemode" type="OptionButton" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -136,7 +136,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Blocked cells"
 popup/item_1/id = 1
 
-[node name="BlockedCells" type="SpinBox" parent="Control"]
+[node name="BlockedCellsChance" type="SpinBox" parent="Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -166,3 +166,5 @@ select_all_on_focus = true
 [connection signal="value_changed" from="Control/MapSize" to="." method="_on_map_size_value_changed"]
 [connection signal="value_changed" from="Control/PlayersCount" to="." method="_on_players_count_value_changed"]
 [connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="item_selected" from="Control/Gamemode" to="." method="change_gamemode"]
+[connection signal="value_changed" from="Control/BlockedCellsChance" to="." method="_on_blocked_cells_chance_value_changed"]

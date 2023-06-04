@@ -1,6 +1,6 @@
 extends Node
 
-const player_color_saturation_factor: float = 0.4
+const player_color_saturation_factor: float = 0.5
 
 var Player = preload("res://Game/player.gd")
 
@@ -8,11 +8,11 @@ enum GAMEMODE {CLASSIC, BLOCKED_CELLS}
 
 
 
-var gamemode : GAMEMODE = GAMEMODE.BLOCKED_CELLS
+var gamemode : GAMEMODE = GAMEMODE.CLASSIC
 var players : Array[Player]
 var map_size : int = 3
 
-var probability_block_gets_blocked = 0.2
+var blocked_cell_chance = 0.2
 
 
 
