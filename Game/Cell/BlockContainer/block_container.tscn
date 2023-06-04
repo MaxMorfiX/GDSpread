@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://q11v8jukpljn"]
+[gd_scene load_steps=3 format=3 uid="uid://cy7uydnakehvo"]
 
-[ext_resource type="Texture2D" uid="uid://dyptw6nt816x8" path="res://Game/Cell/BlockContainer/blockContainer.png" id="1_ur6kr"]
+[ext_resource type="Texture2D" uid="uid://dyptw6nt816x8" path="res://Game/Cell/BlockContainer/BlockContainer.png" id="1_8x1mk"]
 [ext_resource type="Script" path="res://Game/Cell/BlockContainer/block_container.gd" id="2_hn24r"]
 
 [node name="BlockContainer" type="Sprite2D"]
 self_modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-texture = ExtResource("1_ur6kr")
+texture = ExtResource("1_8x1mk")
 script = ExtResource("2_hn24r")

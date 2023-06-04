@@ -137,6 +137,7 @@ popup/item_1/text = "Blocked cells"
 popup/item_1/id = 1
 
 [node name="BlockedCells" type="SpinBox" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

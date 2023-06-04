@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyptw6nt816x8"
-path="res://.godot/imported/BlockContainer.png-2fb25630360ea9bd44a3e59ce2476a17.ctex"
+uid="uid://bj35kia2slnbh"
+path="res://.godot/imported/Grating.png-40cca23747dbd9e53ed2b84394bebd5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Cell/BlockContainer/BlockContainer.png"
-dest_files=["res://.godot/imported/BlockContainer.png-2fb25630360ea9bd44a3e59ce2476a17.ctex"]
+source_file="res://Game/Cell/Grating.png"
+dest_files=["res://.godot/imported/Grating.png-40cca23747dbd9e53ed2b84394bebd5a.ctex"]
 
 [params]
 

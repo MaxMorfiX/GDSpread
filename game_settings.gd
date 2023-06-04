@@ -4,8 +4,17 @@ const player_color_saturation_factor: float = 0.4
 
 var Player = preload("res://Game/player.gd")
 
+enum GAMEMODE {CLASSIC, BLOCKED_CELLS}
+
+
+
+var gamemode : GAMEMODE = GAMEMODE.BLOCKED_CELLS
 var players : Array[Player]
 var map_size : int = 3
+
+var probability_block_gets_blocked = 0.2
+
+
 
 var players_count : int :
 	set(value):

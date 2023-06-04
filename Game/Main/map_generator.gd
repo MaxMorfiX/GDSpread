@@ -4,6 +4,8 @@ var Cell = preload('res://Game/Cell/cell.tscn')
 
 var step_size = 360*1.5
 
+var rng = RandomNumberGenerator.new()
+
 func generate_map(size: int) -> Array[Cell]:
 	
 	var cells : Array[Cell] = []
@@ -32,6 +34,7 @@ func generate_map(size: int) -> Array[Cell]:
 	return cells
 
 func generate_cell(raw_x: int, raw_y: int) -> Cell:
+	
 	var cell = Cell.instantiate()
 	
 	var pos = Vector2(raw_x, raw_y)
@@ -40,5 +43,10 @@ func generate_cell(raw_x: int, raw_y: int) -> Cell:
 	cell.position = pos
 	
 	add_child(cell)
+	
+	if GameSettings.gamemode == GameSettings.GAMEMODE.BLOCKED_CELLS:
+		var block: float = rng.randf()
+		
+		if block < GameSettings.probability_block_gets_blocked: cell.block()
 	
 	return cell

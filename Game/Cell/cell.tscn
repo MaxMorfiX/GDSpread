@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctqoqvv6qspqk"]
+[gd_scene load_steps=8 format=3 uid="uid://duep3ctnlcttp"]
 
-[ext_resource type="Script" path="res://Game/Cell/cell.gd" id="1_bjolv"]
-[ext_resource type="PackedScene" uid="uid://q11v8jukpljn" path="res://Game/Cell/BlockContainer/block_container.tscn" id="2_bwy67"]
-[ext_resource type="Texture2D" uid="uid://da5cqxlo0i0xs" path="res://Game/Cell/cellCenter.png" id="2_nxjg6"]
+[ext_resource type="Script" path="res://Game/Cell/cell.gd" id="1_drccj"]
+[ext_resource type="PackedScene" uid="uid://cy7uydnakehvo" path="res://Game/Cell/BlockContainer/block_container.tscn" id="2_bwy67"]
+[ext_resource type="Texture2D" uid="uid://da5cqxlo0i0xs" path="res://Game/Cell/Center.png" id="3_33ajn"]
+[ext_resource type="Texture2D" uid="uid://cnw1fy87sm7w6" path="res://Game/Cell/Border.png" id="4_s5xu1"]
 [ext_resource type="Texture2D" uid="uid://dujufuvuoijbq" path="res://Game/Cell/cycle.png" id="4_v401w"]
-[ext_resource type="Texture2D" uid="uid://cnw1fy87sm7w6" path="res://Game/Cell/cellBorder.png" id="5_ddlmj"]
+[ext_resource type="Texture2D" uid="uid://bj35kia2slnbh" path="res://Game/Cell/Grating.png" id="6_b8rey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkjn7"]
 size = Vector2(360, 360)
 
 [node name="Cell" type="Area2D"]
-script = ExtResource("1_bjolv")
+script = ExtResource("1_drccj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nkjn7")
@@ -35,13 +36,20 @@ self_modulate = Color(1, 0, 0, 1)
 texture_filter = 1
 texture = ExtResource("4_v401w")
 
-[node name="CellCenter" type="Sprite2D" parent="."]
+[node name="Center" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
 texture_filter = 1
-texture = ExtResource("2_nxjg6")
+scale = Vector2(2, 2)
+texture = ExtResource("3_33ajn")
 
-[node name="CellBorder" type="Sprite2D" parent="."]
+[node name="Border" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 0, 0, 1)
 texture_filter = 1
-texture = ExtResource("5_ddlmj")
+texture = ExtResource("4_s5xu1")
+
+[node name="Grating" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.196078, 0.196078, 0.196078, 1)
+texture_filter = 3
+texture = ExtResource("6_b8rey")

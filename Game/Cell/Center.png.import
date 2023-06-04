@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da5cqxlo0i0xs"
-path="res://.godot/imported/cellCenter.png-abbfb380c7bb9cdc8ffe8210cea27512.ctex"
+path="res://.godot/imported/Center.png-b1e892ed2128e354dcc3e80e4ada3e6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Cell/cellCenter.png"
-dest_files=["res://.godot/imported/cellCenter.png-abbfb380c7bb9cdc8ffe8210cea27512.ctex"]
+source_file="res://Game/Cell/Center.png"
+dest_files=["res://.godot/imported/Center.png-b1e892ed2128e354dcc3e80e4ada3e6f.ctex"]
 
 [params]
 

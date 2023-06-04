@@ -5,14 +5,15 @@ var Block = preload('res://Game/Block/block.tscn')
 var BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
 
 
+var is_blocked : bool = false
 var player : int = 0
 var energy = 0
 var max_energy = 4
 
 
-
 @onready var cycle_node : Sprite2D = get_node("Cycle")
 @onready var flying_blocks_container : Node2D = $"../../FlyingBlocksContainer"
+@onready var grating : Sprite2D = $Grating
 @onready var block_container_nodes : Array [Node] = [
 	$BlockContainers/BlockContainer0,
 	$BlockContainers/BlockContainer1,
@@ -33,8 +34,7 @@ func set_block_containers(containers_to_show: Array[bool]) -> void:
 		else:
 			max_energy += 1
 
-
-func _input_event(_viewport, event, _shape_idx):
+func _input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.is_pressed():
@@ -42,6 +42,8 @@ func _input_event(_viewport, event, _shape_idx):
 
 func on_click() -> void:
 	
+	if is_blocked:
+		return
 	if get_tree().current_scene.state != get_tree().current_scene.State.PLAYER_MOVE:
 		return
 	if energy > 0 and get_tree().current_scene.curr_player != player:
@@ -77,9 +79,7 @@ func explode() -> void:
 		var block = container.get_block()
 		
 		if block == null:
-			
-			
-			("error")
+			print_debug("error")
 		
 		block.throw(container.relative_raw_position)
 		container.remove_child(block)
@@ -90,9 +90,12 @@ func set_player(player_id: int) -> void:
 	player = player_id
 	
 	cycle_node.self_modulate = get_tree().current_scene.players[player_id].color
-		
+	
 	for i in range(0, energy):
 		var container: BlockContainer = block_container_nodes[i]
 		var block: Block = container.get_block()
 		block.set_player(player_id)
-	
+
+func block() -> void:
+	is_blocked = true
+	grating.show()
