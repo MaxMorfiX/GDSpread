@@ -7,7 +7,6 @@ extends Sprite2D
 
 func _draw() -> void:
 	
-	draw_circle(Vector2(), 100, Color8(255, 0, 0))
 	var style_box = StyleBoxFlat.new()
 	style_box.set_corner_radius_all(radius)
 	draw_style_box(style_box, Rect2(Vector2(-size/2.0, -size/2.0), Vector2(size, size)))
