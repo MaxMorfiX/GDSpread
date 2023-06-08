@@ -26,7 +26,7 @@ func _ready() -> void:
 	if GameSettings.gamemode == GameSettings.GAMEMODE.BLOCKED_CELLS:
 		blocked_cells_chance_node.show()
 
-func change_gamemode(mode: int):
+func change_gamemode(mode: GameSettings.GAMEMODE):
 	GameSettings.gamemode = mode
 	
 	if mode == GameSettings.GAMEMODE.BLOCKED_CELLS:

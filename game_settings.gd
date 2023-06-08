@@ -1,6 +1,6 @@
 extends Node
 
-const player_color_saturation_factor: float = 0.5
+const player_color_saturation_factor: float = 0.35
 
 var Player = preload("res://Game/player.gd")
 

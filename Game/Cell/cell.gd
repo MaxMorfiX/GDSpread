@@ -96,6 +96,6 @@ func set_player(player_id: int) -> void:
 		var block: Block = container.get_block()
 		block.set_player(player_id)
 
-func block() -> void:
+func block_cell() -> void:
 	is_blocked = true
 	grating.show()
