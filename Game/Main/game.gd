@@ -1,33 +1,28 @@
 extends Node2D
 
-var Cell = preload('res://Game/Cell/cell.tscn')
-
-@onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
-
-var cells: Array[Cell]
-
-var game_ended: bool = false
-
-func _ready() -> void:
-	
-	for player in GameSettings.players:
-		players.append(Player.new(player.color))
-	
-	curr_player = RandomNumberGenerator.new().randi_range(0, players.size() - 1)
-	
-	cells = get_node("Map").generate_map()
-	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
-
-var Player = preload('res://Game/player.gd')
-
-var players : Array[Player]
-
-var curr_turn : int = 0
-
 enum State {PLAYER_MOVE, EXPLOSIONS}
 var state: State = State.PLAYER_MOVE
 
+var Player = preload('res://Game/player.gd')
+var players : Array[Player] = GameSettings.players
 var curr_player: int = 0
+
+var curr_turn : int = 0
+var game_ended: bool = false
+
+var Cell = preload('res://Game/Cell/cell.tscn')
+var cells: Array[Cell]
+
+
+@onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
+
+
+func _ready() -> void:
+	
+	players.shuffle()
+	
+	cells = get_node("Map").generate_map()
+	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 
 func _input(ev):
 	
@@ -143,14 +138,6 @@ func handle_players():
 		game_ended = true
 		%GameWinMenu.win_player(last_player)
 
-#function below wasn't written by ChatGPT
-func saturate_player_color(color: Color) -> Color:
-	
-	var col = Color(color)
-	
-	col.s -= GameSettings.player_color_saturation_factor
-	
-	return col
 
 func _restart_game() -> void:
 	get_tree().reload_current_scene()
@@ -158,7 +145,14 @@ func _restart_game() -> void:
 func _go_to_main_menu() -> void:
 	get_tree().change_scene_to_file('res://Menus/MainMenu/MainMenu.tscn')
 
-
 func hide_game_win_menu() -> void:
 	%GameWinMenu.hide()
 	%GameButtons.show()
+
+func saturate_player_color(color: Color) -> Color:
+	
+	var col = Color(color)
+	
+	col.s -= GameSettings.player_color_saturation_factor
+	
+	return col
