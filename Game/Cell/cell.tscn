@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Game/Cell/background.gd" id="7_u3l06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkjn7"]
-size = Vector2(360, 360)
+size = Vector2(390, 390)
 
 [node name="Cell" type="Area2D"]
 script = ExtResource("1_b7bhk")
