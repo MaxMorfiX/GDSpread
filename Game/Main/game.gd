@@ -6,6 +6,8 @@ var Cell = preload('res://Game/Cell/cell.tscn')
 
 var cells: Array[Cell]
 
+var game_ended: bool = false
+
 func _ready() -> void:
 	
 	for player in GameSettings.players:
@@ -93,6 +95,8 @@ func handle_players():
 	#yes I know that this code is complex and shitty but I'm too lazy now to fix it for now
 	#Yahoo it became more complex with this commit!
 	
+	if game_ended: return
+	
 	if curr_turn < 1: return
 	
 	var players_score: Array[int] = []
@@ -133,9 +137,11 @@ func handle_players():
 #	print("players left: " + str(players_active))
 	
 	if players_active < 2:
+		
+		game_ended = true
 		%GameWinMenu.win_player(last_player)
 
-#function below was written by ChatGPT
+#function below wasn't written by ChatGPT
 func saturate_player_color(color: Color) -> Color:
 	
 	var col = Color(color)
@@ -149,3 +155,8 @@ func _restart_game() -> void:
 
 func _go_to_main_menu() -> void:
 	get_tree().change_scene_to_file('res://Menus/MainMenu/MainMenu.tscn')
+
+
+func hide_game_win_menu() -> void:
+	%GameWinMenu.hide()
+	%GameButtons.show()

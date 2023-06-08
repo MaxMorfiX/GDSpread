@@ -54,7 +54,6 @@ layout_mode = 1
 offset_top = 15.0
 offset_right = 100.0
 offset_bottom = 100.0
-tooltip_text = "Restart the current game"
 focus_mode = 0
 text = "Rstrt"
 metadata/_edit_use_anchors_ = true
@@ -64,7 +63,6 @@ layout_mode = 1
 offset_top = 120.0
 offset_right = 100.0
 offset_bottom = 205.0
-tooltip_text = "Go to the main menu"
 focus_mode = 0
 text = "Home"
 metadata/_edit_use_anchors_ = true
@@ -114,6 +112,22 @@ grow_vertical = 2
 focus_mode = 0
 text = "GO TO MENU"
 
+[node name="HideButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = 206.0
+offset_right = 64.5
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "(hide)"
+
 [node name="GameWinText" type="Label" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
 layout_mode = 1
 anchors_preset = 8
@@ -140,3 +154,4 @@ script = ExtResource("2_sjlhw")
 [connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/HomeButton" to="." method="_go_to_main_menu"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/RestartButton" to="." method="_restart_game"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HomeButton" to="." method="_go_to_main_menu"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HideButton" to="." method="hide_game_win_menu"]

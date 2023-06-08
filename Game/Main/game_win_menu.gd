@@ -12,3 +12,5 @@ func win_player(player: int) -> void:
 	%GameButtons.hide()
 	
 	show()
+	
+	print("player " + str(player) + " won the game!")

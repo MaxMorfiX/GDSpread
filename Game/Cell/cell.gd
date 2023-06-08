@@ -10,7 +10,7 @@ var player : int = 0
 var energy = 0
 var max_energy = 4
 
-
+@onready var game = get_tree().current_scene
 @onready var cycle_node : Sprite2D = get_node("Cycle")
 @onready var flying_blocks_container : Node2D = $"../../FlyingBlocksContainer"
 @onready var grating : Sprite2D = $Grating
@@ -44,15 +44,15 @@ func on_click() -> void:
 	
 	if is_blocked:
 		return
-	if get_tree().current_scene.state != get_tree().current_scene.State.PLAYER_MOVE:
+	if game.state != game.State.PLAYER_MOVE and !game.game_ended:
 		return
-	if energy > 0 and get_tree().current_scene.curr_player != player:
+	if energy > 0 and game.curr_player != player:
 		return
 	
-	get_tree().current_scene.cell_clicked()
+	game.cell_clicked()
 	
 	var block: Block = Block.instantiate()
-	block.set_player(get_tree().current_scene.curr_player)
+	block.set_player(game.curr_player)
 	add_block(block)
 
 func add_block(block: Block) -> void:
@@ -89,7 +89,7 @@ func explode() -> void:
 func set_player(player_id: int) -> void:
 	player = player_id
 	
-	cycle_node.self_modulate = get_tree().current_scene.players[player_id].color
+	cycle_node.self_modulate = game.players[player_id].color
 	
 	for i in range(0, energy):
 		var container: BlockContainer = block_container_nodes[i]
