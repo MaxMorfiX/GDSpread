@@ -21,7 +21,7 @@ GameSettings="*res://game_settings.gd"
 
 [display]
 
-window/size/mode=2
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [rendering]

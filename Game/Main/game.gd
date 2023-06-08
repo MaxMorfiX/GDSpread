@@ -4,7 +4,7 @@ enum State {PLAYER_MOVE, EXPLOSIONS}
 var state: State = State.PLAYER_MOVE
 
 var Player = preload('res://Game/player.gd')
-var players : Array[Player] = GameSettings.players
+var players : Array[Player] = []
 var curr_player: int = 0
 
 var curr_turn : int = 0
@@ -18,6 +18,10 @@ var cells: Array[Cell]
 
 
 func _ready() -> void:
+	
+	#I do it because godot doesn't сopy players own objects
+	for player in GameSettings.players:
+		players.append(Player.new(player.color))
 	
 	players.shuffle()
 	
