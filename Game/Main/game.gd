@@ -13,6 +13,8 @@ func _ready() -> void:
 	for player in GameSettings.players:
 		players.append(Player.new(player.color))
 	
+	curr_player = RandomNumberGenerator.new().randi_range(0, players.size() - 1)
+	
 	cells = get_node("Map").generate_map()
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 
