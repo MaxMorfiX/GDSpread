@@ -120,7 +120,7 @@ label_settings = SubResource("LabelSettings_0ext5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="Button" parent="Control"]
+[node name="ExitButton" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,4 +157,4 @@ vertical_alignment = 1
 [node name="BackgroundCanvas" parent="Camera2D" instance=ExtResource("2_ik6no")]
 
 [connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Control/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/ExitButton" to="." method="_on_exit_button_pressed"]
