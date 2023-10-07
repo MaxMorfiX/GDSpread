@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf6kgg8e76re"]
+[gd_scene load_steps=5 format=3 uid="uid://cf6kgg8e76re"]
 
+[ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_j2sp3"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_m7xu2"]
 [ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_ifqqj"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="3_msk1f"]
 
 [node name="NewGameEditor" type="CanvasLayer"]
+script = ExtResource("1_j2sp3")
 
 [node name="Background" type="TextureRect" parent="."]
 z_as_relative = false
@@ -41,62 +43,66 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="Parameters" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PlayersChooser" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayersChooser" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Parameters"]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/Parameters/PlayersChooser"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser/AspectRatioContainer"]
+[node name="SubtractButton" type="Button" parent="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "-"
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Parameters/PlayersChooser"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Players: 2"
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/Parameters/PlayersChooser"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser/AspectRatioContainer2"]
+[node name="AddButton" type="Button" parent="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "+"
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/Parameters"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="MapSizeChooser" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="MapSizeChooser" type="HBoxContainer" parent="CenterContainer/VBoxContainer/Parameters"]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/Parameters/MapSizeChooser"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser/AspectRatioContainer"]
+[node name="SubtractButton" type="Button" parent="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "-"
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Parameters/MapSizeChooser"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Map Size: 2"
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/Parameters/MapSizeChooser"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser/AspectRatioContainer2"]
+[node name="AddButton" type="Button" parent="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer2"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "+"
 
@@ -109,3 +115,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 60
 text = "    Play    "
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer/SubtractButton" to="." method="_change_players_count" binds= [-1]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer2/AddButton" to="." method="_change_players_count" binds= [1]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer/SubtractButton" to="." method="_change_map_size" binds= [-1]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer2/AddButton" to="." method="_change_map_size" binds= [1]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

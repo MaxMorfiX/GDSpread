@@ -7,6 +7,8 @@ var Player = preload("res://Game/player.gd")
 enum GAMEMODE {CLASSIC, BLOCKED_CELLS}
 
 
+var max_players : int = 7
+
 
 var gamemode : GAMEMODE = GAMEMODE.CLASSIC
 var players : Array[Player]
