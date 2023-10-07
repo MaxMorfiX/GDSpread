@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7ntpmxcn7na3"]
+[gd_scene load_steps=5 format=3 uid="uid://c7ntpmxcn7na3"]
 
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_7bwys"]
 [ext_resource type="Script" path="res://Menus/MainMenu/main_menu.gd" id="1_8vyaw"]
 [ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_u7r8c"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="4_gsavx"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_flw52"]
-font_size = 51
-font_color = Color(0, 0, 0, 1)
 
 [node name="NewMainMenu" type="CanvasLayer"]
 script = ExtResource("1_8vyaw")
@@ -75,8 +71,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 51
 text = "Made by MaxMorfiX"
-label_settings = SubResource("LabelSettings_flw52")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

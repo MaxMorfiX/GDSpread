@@ -1,32 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgegl117cy0xe"]
+[gd_scene load_steps=4 format=3 uid="uid://cf6kgg8e76re"]
 
-[ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_g7iaw"]
-[ext_resource type="PackedScene" uid="uid://bf0o1q3l0l201" path="res://Menus/Background/background.tscn" id="2_0kmde"]
-[ext_resource type="Theme" uid="uid://ed71uvkuo1gj" path="res://Menus/main_theme.tres" id="3_o168j"]
+[ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_m7xu2"]
+[ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_ifqqj"]
+[ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="3_msk1f"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yh3j5"]
-draw_center = false
+[node name="NewGameEditor" type="CanvasLayer"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_qv1mm"]
-font_size = 140
+[node name="Background" type="TextureRect" parent="."]
+z_as_relative = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m7xu2")
+stretch_mode = 1
+script = ExtResource("2_ifqqj")
 
-[sub_resource type="InputEventKey" id="InputEventKey_p6x2j"]
-device = -1
-keycode = 4194309
-
-[sub_resource type="InputEventKey" id="InputEventKey_fj7el"]
-device = -1
-keycode = 32
-unicode = 32
-
-[sub_resource type="Shortcut" id="Shortcut_dqy5o"]
-events = [SubResource("InputEventKey_p6x2j"), SubResource("InputEventKey_fj7el")]
-
-[node name="NewGameEditor" type="Node2D"]
-script = ExtResource("1_g7iaw")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,137 +26,86 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("3_o168j")
+theme = ExtResource("3_msk1f")
 
-[node name="NewGameText" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_top = -300.0
-offset_right = 250.0
-offset_bottom = -100.0
-grow_horizontal = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_yh3j5")
-text = "New Game
-"
-label_settings = SubResource("LabelSettings_qv1mm")
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 91
+text = "New Game"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="MapSize" type="SpinBox" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -420.0
-offset_top = -75.0
-offset_right = -20.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
-min_value = 2.0
-max_value = 256.0
-value = 3.0
-rounded = true
-alignment = 1
-prefix = "Map Size:"
-custom_arrow_step = 0.01
-select_all_on_focus = true
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
-[node name="PlayersCount" type="SpinBox" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -75.0
-offset_right = 420.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
-min_value = 2.0
-max_value = 16.0
-value = 2.0
-alignment = 1
-prefix = "Players Count:"
-custom_arrow_step = 0.003
-select_all_on_focus = true
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = 114.0
-offset_right = 142.0
-offset_bottom = 234.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-shortcut = SubResource("Shortcut_dqy5o")
-shortcut_in_tooltip = false
-text = "PLAY"
+[node name="PlayersChooser" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 
-[node name="Gamemode" type="OptionButton" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -418.0
-offset_top = 114.0
-offset_right = -168.0
-offset_bottom = 234.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-alignment = 1
-item_count = 2
-selected = 0
-popup/item_0/text = "Classic"
-popup/item_0/id = 0
-popup/item_1/text = "Blocked cells"
-popup/item_1/id = 1
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser"]
+layout_mode = 2
 
-[node name="BlockedCellsChance" type="SpinBox" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 168.0
-offset_top = 114.0
-offset_right = 498.0
-offset_bottom = 234.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 80.0
-step = 0.1
-value = 10.0
-alignment = 1
-prefix = "Blocked Cells:"
-suffix = "%"
-custom_arrow_step = 0.01
-select_all_on_focus = true
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser/AspectRatioContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "-"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Players: 2"
 
-[node name="BackgroundCanvas" parent="Camera2D" instance=ExtResource("2_0kmde")]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser"]
+layout_mode = 2
 
-[connection signal="value_changed" from="Control/MapSize" to="." method="_on_map_size_value_changed"]
-[connection signal="value_changed" from="Control/PlayersCount" to="." method="_on_players_count_value_changed"]
-[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="item_selected" from="Control/Gamemode" to="." method="change_gamemode"]
-[connection signal="value_changed" from="Control/BlockedCellsChance" to="." method="_on_blocked_cells_chance_value_changed"]
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/PlayersChooser/AspectRatioContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MapSizeChooser" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser/AspectRatioContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "-"
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Map Size: 2"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/MapSizeChooser/AspectRatioContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "    Play    "
