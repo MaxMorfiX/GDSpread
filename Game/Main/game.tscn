@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_eix43"]
 [ext_resource type="Script" path="res://Game/Main/map_generator.gd" id="2_sjlhw"]
 [ext_resource type="Script" path="res://Game/Main/game_win_menu.gd" id="4_6kf1a"]
-[ext_resource type="Theme" uid="uid://ed71uvkuo1gj" path="res://Menus/main_theme.tres" id="4_fc2ic"]
+[ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="6_gmugp"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_jvlg8")
@@ -26,133 +26,190 @@ stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="Control" type="Control" parent="Camera2D/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme = ExtResource("4_fc2ic")
-metadata/_edit_use_anchors_ = true
-
-[node name="GameButtons" type="Control" parent="Camera2D/CanvasLayer/Control"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameButtons"]
-layout_mode = 1
-offset_top = 15.0
-offset_right = 100.0
-offset_bottom = 100.0
-focus_mode = 0
-text = "Rstrt"
-metadata/_edit_use_anchors_ = true
-
-[node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameButtons"]
-layout_mode = 1
-offset_top = 120.0
-offset_right = 100.0
-offset_bottom = 205.0
-focus_mode = 0
-text = "Home"
-metadata/_edit_use_anchors_ = true
-
-[node name="GameWinMenu" type="Control" parent="Camera2D/CanvasLayer/Control"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("4_6kf1a")
-
-[node name="RestartButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -50.0
-offset_right = 150.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-text = "RESTART"
-
-[node name="HomeButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = 76.0
-offset_right = 125.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-text = "GO TO MENU"
-
-[node name="HideButton" type="Button" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = 206.0
-offset_right = 64.5
-offset_bottom = 263.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 20
-text = "(hide)"
-
-[node name="GameWinText" type="Label" parent="Camera2D/CanvasLayer/Control/GameWinMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -515.5
-offset_top = -224.0
-offset_right = 515.5
-offset_bottom = -76.0004
-grow_horizontal = 2
-grow_vertical = 2
-text = "Player x won the game!"
-horizontal_alignment = 1
-vertical_alignment = 1
+process_mode = 3
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("2_sjlhw")
 
 [node name="FlyingBlocksContainer" type="Node2D" parent="."]
 
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/RestartButton" to="." method="_restart_game"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameButtons/HomeButton" to="." method="_go_to_main_menu"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/RestartButton" to="." method="_restart_game"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HomeButton" to="." method="_go_to_main_menu"]
-[connection signal="pressed" from="Camera2D/CanvasLayer/Control/GameWinMenu/HideButton" to="." method="hide_game_win_menu"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_bottom = 130.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_gmugp")
+theme_override_font_sizes/font_size = 30
+text = "PAUSE"
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_gmugp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 140
+text = "PAUSED"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "HOME"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer2"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "RESUME"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer3"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
+
+[node name="GameWinMenu" type="VBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.5
+offset_top = -123.5
+offset_right = 451.5
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_6kf1a")
+
+[node name="GameWinLabel" type="Label" parent="CanvasLayer/GameWinMenu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Player X won the game!"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/GameWinMenu"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameWinMenu/CenterContainer"]
+layout_mode = 2
+theme = ExtResource("6_gmugp")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "HOME"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HideButton" type="Button" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer2"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "(hide)"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer3"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_toggle_pause"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer2/ResumeButton" to="." method="_toggle_pause"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]
+[connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
+[connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer2/HideButton" to="." method="hide_game_win_menu"]
+[connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]

@@ -10,11 +10,14 @@ var curr_player: int = 0
 var curr_turn : int = 0
 var game_ended: bool = false
 
+var paused: bool = false
+
 var Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
 
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
+@onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
 
 
 func _ready() -> void:
@@ -110,7 +113,7 @@ func handle_players():
 		
 		players_score[cell.player] += 1	
 		
-#	print(players_score)
+	#print(players_score)
 	
 	for pId in range(players_score.size()): #player dies if there're no his cells
 		if players_score[pId] == 0:
@@ -142,16 +145,27 @@ func handle_players():
 		game_ended = true
 		%GameWinMenu.win_player(last_player)
 
+#UI FUNCTIONS
+
+func _toggle_pause():
+	_set_paused(not paused)
+
+func _set_paused(value: bool) -> void:
+	paused = value
+	get_tree().paused = paused
+	pause_menu.visible = paused
 
 func _restart_game() -> void:
+	_set_paused(false)
 	get_tree().reload_current_scene()
 
 func _go_to_main_menu() -> void:
+	_set_paused(false)
 	get_tree().change_scene_to_file('res://Menus/MainMenu/MainMenu.tscn')
 
 func hide_game_win_menu() -> void:
 	%GameWinMenu.hide()
-	%GameButtons.show()
+	%PauseButton.show()
 
 func saturate_player_color(color: Color) -> Color:
 	

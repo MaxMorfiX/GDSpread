@@ -113,6 +113,7 @@ layout_mode = 2
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 theme_override_font_sizes/font_size = 60
 text = "    Play    "
 
