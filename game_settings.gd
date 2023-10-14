@@ -16,6 +16,9 @@ var map_size : int = 3
 
 var blocked_cell_chance = 0.2
 
+@onready var previous_window = DisplayServer.window_get_mode()
+@onready var current_window = DisplayServer.window_get_mode()
+
 
 
 var players_count : int :
@@ -48,5 +51,17 @@ func create_players(count: int) -> Array[Player]:
 		plrs.push_back(Player.new(color))
 		
 	return plrs
+
+
+func _input(event):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		current_window = DisplayServer.window_get_mode()
+		if current_window != 4:
+			previous_window = current_window
+			DisplayServer.window_set_mode(4)
+		else:
+			if previous_window == 4:
+				previous_window = 2
+			DisplayServer.window_set_mode(previous_window)
 
 #I still didn't implemented saving
