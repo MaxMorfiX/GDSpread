@@ -30,6 +30,8 @@ func _ready() -> void:
 	
 	cells = get_node("Map").generate_map()
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
+	
+	resize_leaderboard_background_properly()
 
 func _input(ev):
 	
@@ -174,3 +176,10 @@ func saturate_player_color(color: Color) -> Color:
 	col.s -= GameSettings.player_color_saturation_factor
 	
 	return col
+
+func resize_leaderboard_background_properly() -> void:
+	var size_of_leaderboard: Vector2 = $CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer.get_minimum_size()
+#	print(size_of_leaderboard)
+	$CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect.custom_minimum_size = size_of_leaderboard
+	
+#	print($CanvasLayer/CenterContainer/BackgroundColorRect)

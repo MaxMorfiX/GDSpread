@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf6kgg8e76re"]
+[gd_scene load_steps=8 format=3 uid="uid://cf6kgg8e76re"]
 
 [ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_j2sp3"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_m7xu2"]
 [ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_ifqqj"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="3_msk1f"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_thcqu"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_cr2i7"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_n32sa"]
+events = [SubResource("InputEventKey_thcqu"), SubResource("InputEventKey_cr2i7")]
 
 [node name="NewGameEditor" type="CanvasLayer"]
 script = ExtResource("1_j2sp3")
@@ -26,12 +38,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("3_msk1f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme = ExtResource("3_msk1f")
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -115,6 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_font_sizes/font_size = 60
+shortcut = SubResource("Shortcut_n32sa")
 text = "    Play    "
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer/SubtractButton" to="." method="_change_players_count" binds= [-1]]

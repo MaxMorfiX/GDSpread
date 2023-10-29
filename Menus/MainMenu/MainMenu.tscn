@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7ntpmxcn7na3"]
+[gd_scene load_steps=8 format=3 uid="uid://c7ntpmxcn7na3"]
 
 [ext_resource type="Script" path="res://Menus/MainMenu/main_menu.gd" id="1_sewdd"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_r54me"]
 [ext_resource type="Script" path="res://Menus/Background/background.gd" id="3_8niyw"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="4_ilmst"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_thcqu"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_cr2i7"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_ec71l"]
+events = [SubResource("InputEventKey_thcqu"), SubResource("InputEventKey_cr2i7")]
 
 [node name="NewMainMenu" type="CanvasLayer"]
 script = ExtResource("1_sewdd")
@@ -50,7 +62,8 @@ layout_mode = 2
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 100
-text = "Play"
+shortcut = SubResource("Shortcut_ec71l")
+text = "PLAY"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

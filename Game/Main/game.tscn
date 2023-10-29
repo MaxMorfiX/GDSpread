@@ -1,10 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://4s77o3xel6tj"]
+[gd_scene load_steps=12 format=3 uid="uid://4s77o3xel6tj"]
 
 [ext_resource type="Script" path="res://Game/Main/game.gd" id="1_jvlg8"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_eix43"]
 [ext_resource type="Script" path="res://Game/Main/map_generator.gd" id="2_sjlhw"]
 [ext_resource type="Script" path="res://Game/Main/game_win_menu.gd" id="4_6kf1a"]
+[ext_resource type="Script" path="res://Game/Main/leaderboard.gd" id="6_dg2gd"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="6_gmugp"]
+[ext_resource type="PackedScene" uid="uid://c654br61enqru" path="res://Game/PlayerScore/PlayeScore.tscn" id="6_ywmhg"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tsk8p"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_b0u66"]
+events = [SubResource("InputEventKey_tsk8p")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vbs84"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_y45wc"]
+events = [SubResource("InputEventKey_vbs84")]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_jvlg8")
@@ -48,6 +64,7 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("6_gmugp")
 theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_b0u66")
 text = "PAUSE"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
@@ -121,6 +138,7 @@ custom_minimum_size = Vector2(180, 130)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_y45wc")
 text = "RESUME"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
@@ -205,6 +223,52 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "RESTART"
+
+[node name="LeaderboardCenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("6_dg2gd")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="CanvasLayer/LeaderboardCenterContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.407843)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 172.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Scores:"
+
+[node name="PlayerScore" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore2" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore3" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore4" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore5" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore6" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore7" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_toggle_pause"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
