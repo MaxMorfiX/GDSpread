@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name BlockContainer
 
-var Block = preload('res://Game/Block/block.tscn')
+const Block = preload('res://Game/Block/block.tscn')
 
 @onready var relative_raw_position := position.normalized()
 

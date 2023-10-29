@@ -67,94 +67,6 @@ theme_override_font_sizes/font_size = 30
 shortcut = SubResource("Shortcut_b0u66")
 text = "PAUSE"
 
-[node name="PauseMenu" type="Control" parent="CanvasLayer"]
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.596078)
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("6_gmugp")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer"]
-layout_mode = 2
-
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 140
-text = "PAUSED"
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HomeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer"]
-custom_minimum_size = Vector2(180, 130)
-layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "HOME"
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer2"]
-custom_minimum_size = Vector2(180, 130)
-layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 30
-shortcut = SubResource("Shortcut_y45wc")
-text = "RESUME"
-
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="RestartButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer3"]
-custom_minimum_size = Vector2(180, 130)
-layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "RESTART"
-
 [node name="GameWinMenu" type="VBoxContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
@@ -249,7 +161,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Scores:"
 
-[node name="PlayerScore" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+[node name="PlayerScore1" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
 layout_mode = 2
 
 [node name="PlayerScore2" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
@@ -270,10 +182,98 @@ layout_mode = 2
 [node name="PlayerScore7" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
 layout_mode = 2
 
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_gmugp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 140
+text = "PAUSED"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "HOME"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer2"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_y45wc")
+text = "RESUME"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer3"]
+custom_minimum_size = Vector2(180, 130)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
+
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_toggle_pause"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer2/ResumeButton" to="." method="_toggle_pause"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer2/HideButton" to="." method="hide_game_win_menu"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer2/ResumeButton" to="." method="_toggle_pause"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]

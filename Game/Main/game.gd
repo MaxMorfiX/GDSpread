@@ -1,9 +1,11 @@
 extends Node2D
 
+class_name GameManager
+
 enum State {PLAYER_MOVE, EXPLOSIONS}
 var state: State = State.PLAYER_MOVE
 
-var Player = preload('res://Game/player.gd')
+const Player = preload('res://Game/player.gd')
 var players : Array[Player] = []
 var curr_player: int = 0
 
@@ -12,12 +14,13 @@ var game_ended: bool = false
 
 var paused: bool = false
 
-var Cell = preload('res://Game/Cell/cell.tscn')
+const Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
 
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
 @onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
+@onready var leaderboard: Control = get_node('CanvasLayer/LeaderboardCenterContainer')
 
 
 func _ready() -> void:
@@ -31,7 +34,8 @@ func _ready() -> void:
 	cells = get_node("Map").generate_map()
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 	
-	resize_leaderboard_background_properly()
+	leaderboard.load_players(players)
+	leaderboard.resize_background_properly()
 
 func _input(ev):
 	
@@ -176,10 +180,3 @@ func saturate_player_color(color: Color) -> Color:
 	col.s -= GameSettings.player_color_saturation_factor
 	
 	return col
-
-func resize_leaderboard_background_properly() -> void:
-	var size_of_leaderboard: Vector2 = $CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer.get_minimum_size()
-#	print(size_of_leaderboard)
-	$CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect.custom_minimum_size = size_of_leaderboard
-	
-#	print($CanvasLayer/CenterContainer/BackgroundColorRect)

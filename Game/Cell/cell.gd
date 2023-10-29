@@ -1,8 +1,8 @@
 extends Area2D
 class_name Cell
 
-var Block = preload('res://Game/Block/block.tscn')
-var BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
+const Block = preload('res://Game/Block/block.tscn')
+const BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
 
 
 var is_blocked : bool = false

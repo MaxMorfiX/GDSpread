@@ -1,7 +1,7 @@
 extends Area2D
 class_name Block
 
-var Cell = preload('res://Game/Cell/cell.tscn')
+const Cell = preload('res://Game/Cell/cell.tscn')
 
 const speed = 300
 

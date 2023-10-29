@@ -1,6 +1,6 @@
 extends Node2D
 
-var Cell = preload('res://Game/Cell/cell.tscn')
+const Cell = preload('res://Game/Cell/cell.tscn')
 
 var step_size = 360*1.5
 

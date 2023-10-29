@@ -2,7 +2,7 @@ extends Node
 
 const player_color_saturation_factor: float = 0.35
 
-var Player = preload("res://Game/player.gd")
+const Player = preload("res://Game/player.gd")
 
 enum GAMEMODE {CLASSIC, BLOCKED_CELLS}
 
