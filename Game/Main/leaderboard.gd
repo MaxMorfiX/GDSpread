@@ -14,7 +14,7 @@ const PlayerScoreLabel = preload("res://Game/PlayerScore/player_score.gd")
 	$BackgroundColorRect/VBoxContainer/PlayerScore7
 ]
 
-func load_players(players) -> void:
+func load_players(players: Array[Player]) -> void:
 	
 	for i in range(0, GameSettings.max_players):
 		
@@ -32,5 +32,14 @@ func resize_background_properly() -> void:
 	var size_of_leaderboard: Vector2 = $BackgroundColorRect/VBoxContainer.get_minimum_size()
 #	print(size_of_leaderboard)
 	$BackgroundColorRect.custom_minimum_size = size_of_leaderboard + Vector2(15, 15)
-	
-#	print($CanvasLayer/CenterContainer/BackgroundColorRect)
+
+func update_player_scores(blocks_counts: Array[int], cells_occupied: Array[int]) -> void:
+	for i in range(blocks_counts.size()):
+		player_scores_displays[i].set_score(blocks_counts[i], cells_occupied[i])
+
+func die_player(pId: int):
+	player_scores_displays[pId].modulate = Color(1, 1, 1, 0.3)
+#	player_scores_displays[pId].hide()
+#	$BackgroundColorRect/VBoxContainer.update_minimum_size()
+#	resize_background_properly()
+#	print("player " + str(pId) + " died")

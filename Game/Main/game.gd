@@ -17,7 +17,6 @@ var paused: bool = false
 const Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
-
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
 @onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
 @onready var leaderboard: Control = get_node('CanvasLayer/LeaderboardCenterContainer')
@@ -102,6 +101,8 @@ func check_can_player_place_a_block(pId: int):
 
 func handle_players():
 	
+	update_player_leaderboard()
+	
 	#yes I know that this code is complex and shitty but I'm too lazy now to fix it for now
 	#Yahoo it became more complex with this commit!
 	
@@ -109,27 +110,14 @@ func handle_players():
 	
 	if curr_turn < 1: return
 	
-	var players_score: Array[int] = []
+	var blocks : Array[Node] = get_node('/root/MainGame/FlyingBlocksContainer').get_children()
 	
-	for i in range(players.size()): #initializing an array with specified size
-		players_score.append(0) 
-	
-	for cell in cells: #counting score (count of cells) of players
-		if cell.energy < 1: continue
-		
-		players_score[cell.player] += 1	
-		
-	#print(players_score)
-	
-	for pId in range(players_score.size()): #player dies if there're no his cells
-		if players_score[pId] == 0:
+	for pId in range(players.size()): #player dies if there're no his cells
+		if players[pId].blocks_count == 0:
 			
 			players[pId].is_active = false
 			
-	var blocks : Array[Node] = get_node('/root/MainGame/FlyingBlocksContainer').get_children()
-			
-	for block in blocks: #counting score (count of cells) of players
-		players[block.player].is_active = true
+			leaderboard.die_player(pId)
 			
 	var players_active : int = 0
 	var last_player : int = 0 #only used when some player won the game
@@ -150,6 +138,16 @@ func handle_players():
 		
 		game_ended = true
 		%GameWinMenu.win_player(last_player)
+
+func update_player_leaderboard():
+	var cells_occupied: Array[int] = []
+	var blocks_counts: Array[int] = []
+	
+	for player in players:
+		cells_occupied.append(player.cells_occupied)
+		blocks_counts.append(player.blocks_count)
+	
+	leaderboard.update_player_scores(cells_occupied, blocks_counts)
 
 #UI FUNCTIONS
 

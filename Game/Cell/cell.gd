@@ -3,6 +3,7 @@ class_name Cell
 
 const Block = preload('res://Game/Block/block.tscn')
 const BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
+const GameManager = preload('res://Game/Main/game.gd')
 
 
 var is_blocked : bool = false
@@ -10,7 +11,7 @@ var player : int = 0
 var energy = 0
 var max_energy = 4
 
-@onready var game = get_tree().current_scene
+@onready var game: GameManager = get_tree().current_scene
 @onready var cycle_node : Sprite2D = get_node("Cycle")
 @onready var flying_blocks_container : Node2D = $"../../FlyingBlocksContainer"
 @onready var grating : Sprite2D = $Grating
@@ -60,17 +61,23 @@ func add_block(block: Block) -> void:
 	block_container_nodes[energy].add_child(block)
 	block.position = Vector2()
 	
-	set_player(block.player)
-	
 	energy+=1
+	
+	game.players[block.player].cells_occupied += 1
 	
 	if energy == 1:
 		cycle_node.show()
+	else:
+		game.players[player].cells_occupied -= 1
+	
+	set_player(block.player)
 	
 	if energy >= max_energy:
 		explode()
 	
 func explode() -> void:
+	
+	game.players[player].cells_occupied -= 1
 	
 	cycle_node.hide()
 	
