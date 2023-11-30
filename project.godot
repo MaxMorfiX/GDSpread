@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GDSpread"
 run/main_scene="res://Menus/MainMenu/MainMenu.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 
 [autoload]
@@ -23,6 +23,17 @@ GameSettings="*res://game_settings.gd"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://Builds/": "purple",
+"res://Game/": "green",
+"res://Menus/": "blue",
+"res://android/": "gray",
+"res://fonts/": "pink",
+"res://textures/": "orange"
+}
 
 [input]
 
