@@ -14,7 +14,7 @@ var gamemode : GAMEMODE = GAMEMODE.CLASSIC
 var players : Array[Player]
 var map_size : int = 3
 
-var blocked_cell_chance = 0.2
+var blocked_cell_chance: float = 0.2
 
 @onready var previous_window: DisplayServer.WindowMode = DisplayServer.window_get_mode()
 @onready var current_window: DisplayServer.WindowMode = DisplayServer.window_get_mode()
@@ -34,7 +34,7 @@ func generate_player_color(player_id: int, players_in_game: int) -> Color:
 	
 	var hue: float = float(player_id)/float(players_in_game)
 	
-	var color = Color.from_hsv(hue, 1, 1, 1)
+	var color: Color = Color.from_hsv(hue, 1, 1, 1)
 	
 #	print(color)
 	
@@ -53,7 +53,7 @@ func create_players(count: int) -> Array[Player]:
 	return plrs
 
 
-func _input(_event):
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		current_window = DisplayServer.window_get_mode()
 		if current_window != DisplayServer.WINDOW_MODE_FULLSCREEN:

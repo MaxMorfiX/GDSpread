@@ -25,7 +25,7 @@ var _radius: int
 
 func _draw() -> void:
 	
-	var style_box = StyleBoxFlat.new()
+	var style_box: StyleBoxFlat = StyleBoxFlat.new()
 	style_box.set_corner_radius_all(_radius)
 	style_box.bg_color = _color
 #	draw_style_box(style_box, Rect2(Vector2(-size.x/2.0, -size.y/2.0), Vector2(size.x, size.y)))

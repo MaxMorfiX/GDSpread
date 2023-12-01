@@ -6,22 +6,21 @@ const BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.t
 const GameManager = preload('res://Game/Main/game.gd')
 
 
-var is_blocked : bool = false
-var player : int = 0
-var energy = 0
-var max_energy = 4
+var is_blocked: bool = false
+var player: int = 0
+var energy: int = 0
+var max_energy: int = 4
 
 @onready var game: GameManager = get_tree().current_scene
 @onready var cycle_node : Sprite2D = get_node("Cycle")
 @onready var flying_blocks_container : Node2D = $"../../FlyingBlocksContainer"
 @onready var grating : Sprite2D = $Grating
-@onready var block_container_nodes : Array [Node] = [
+@onready var block_container_nodes : Array [BlockContainer] = [
 	$BlockContainers/BlockContainer0,
 	$BlockContainers/BlockContainer1,
 	$BlockContainers/BlockContainer2,
 	$BlockContainers/BlockContainer3,
 ]
-
 
 func set_block_containers(containers_to_show: Array[bool]) -> void:
 	
@@ -29,15 +28,15 @@ func set_block_containers(containers_to_show: Array[bool]) -> void:
 		
 	for i in range(containers_to_show.size() - 1, -1, -1):
 		if containers_to_show[i] == false:
-			var container = block_container_nodes[i]
+			var container: Node2D = block_container_nodes[i]
 			container.queue_free()
 			block_container_nodes.pop_at(i)
 		else:
 			max_energy += 1
 
-func _input_event(_viewport, event, _shape_idx) -> void:
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton \
-	and event.button_index == MOUSE_BUTTON_LEFT \
+	and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT \
 	and event.is_pressed():
 		self.on_click()
 
@@ -83,7 +82,7 @@ func explode() -> void:
 	
 	energy -= max_energy
 	for container in block_container_nodes:
-		var block = container.get_block()
+		var block: Block = container.get_block()
 		
 		if block == null:
 			print_debug("error")

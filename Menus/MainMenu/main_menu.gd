@@ -13,4 +13,4 @@ func _ready() -> void:
 	var os: String = OS.get_name()
 	
 	if os == "HTML5" or os == "Web":
-		$CenterContainer/VBoxContainer/ExitButton.hide()
+		($CenterContainer/VBoxContainer/ExitButton as Node2D).hide()

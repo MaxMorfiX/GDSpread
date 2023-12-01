@@ -1,4 +1,5 @@
 extends CenterContainer
+class_name Leaderboard
 
 const PlayerScoreLabel = preload("res://Game/PlayerScore/player_score.gd")
 #const GameManager = preload("res://Game/Main/game.gd")
@@ -26,18 +27,18 @@ func load_players(players: Array[Player]) -> void:
 #			print(i)
 			player_scores_displays[i].set_color(players[i].color)
 	
-	$BackgroundColorRect/VBoxContainer.update_minimum_size()
+	($BackgroundColorRect/VBoxContainer as Control).update_minimum_size()
 
 func resize_background_properly() -> void:
-	var size_of_leaderboard: Vector2 = $BackgroundColorRect/VBoxContainer.get_minimum_size()
+	var size_of_leaderboard: Vector2 = ($BackgroundColorRect/VBoxContainer as Control).get_minimum_size()
 #	print(size_of_leaderboard)
-	$BackgroundColorRect.custom_minimum_size = size_of_leaderboard + Vector2(15, 15)
+	($BackgroundColorRect as Control).custom_minimum_size = size_of_leaderboard + Vector2(15, 15)
 
 func update_player_scores(blocks_counts: Array[int], cells_occupied: Array[int]) -> void:
 	for i in range(blocks_counts.size()):
 		player_scores_displays[i].set_score(blocks_counts[i], cells_occupied[i])
 
-func die_player(pId: int):
+func die_player(pId: int) -> void:
 	player_scores_displays[pId].modulate = Color(1, 1, 1, 0.3)
 #	player_scores_displays[pId].hide()
 #	$BackgroundColorRect/VBoxContainer.update_minimum_size()

@@ -13,7 +13,7 @@ var is_flying : bool = false
 
 var player : int = -1 #-1 is used for checking is player attached to block
 var velocity: Vector2
-var distance_flew = 0
+var distance_flew: float = 0
 
 func _ready() -> void:
 	game.players[player].blocks_count += 1
@@ -41,9 +41,9 @@ func add_to_cell(cell: Cell) -> void:
 	get_parent().remove_child(self)
 	cell.add_block(self)
 
-func set_player(player_id: int):
+func set_player(player_id: int) -> void:
 	
-	var recent_player = player
+	var recent_player: int = player
 	
 	player = player_id
 	

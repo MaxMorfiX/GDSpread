@@ -1,6 +1,6 @@
 extends Node
 
-var rng = RandomNumberGenerator.new()
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 @onready var map_size_node: Label = $CenterContainer/VBoxContainer/Parameters/MapSizeChooser/Label
 @onready var players_count_node: Label = $CenterContainer/VBoxContainer/Parameters/PlayersChooser/Label
