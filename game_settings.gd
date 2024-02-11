@@ -2,7 +2,7 @@ extends Node
 
 const player_color_saturation_factor: float = 0.35
 
-const Player = preload("res://Game/player.gd")
+#const Player = preload("res://Game/player.gd")
 
 enum GAMEMODE {CLASSIC, BLOCKED_CELLS}
 
@@ -53,7 +53,7 @@ func create_players(count: int) -> Array[Player]:
 	return plrs
 
 
-func _input(_event: InputEvent) -> void:
+func _input(_event):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		current_window = DisplayServer.window_get_mode()
 		if current_window != DisplayServer.WINDOW_MODE_FULLSCREEN:

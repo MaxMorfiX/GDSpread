@@ -5,7 +5,7 @@ class_name GameManager
 enum State {PLAYER_MOVE, EXPLOSIONS}
 var state: State = State.PLAYER_MOVE
 
-const Player = preload('res://Game/player.gd')
+#const Player = preload('res://Game/player.gd')
 var players : Array[Player] = []
 var curr_player: int = 0
 
@@ -14,12 +14,12 @@ var game_ended: bool = false
 
 var paused: bool = false
 
-const Cell = preload('res://Game/Cell/cell.tscn')
+#const Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
 @onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
-@onready var leaderboard: Leaderboard = get_node('CanvasLayer/LeaderboardCenterContainer') as Leaderboard
+@onready var leaderboard: Control = get_node('CanvasLayer/LeaderboardCenterContainer')
 
 
 func _ready() -> void:
@@ -30,19 +30,18 @@ func _ready() -> void:
 	
 	players.shuffle()
 	
-	cells = (get_node("Map") as MapGenerator).generate_map()
-	var col: Color = saturate_player_color(players[curr_player].color)
-	(get_node('BackgroundCanvas/Background') as Control).self_modulate = col
+	cells = get_node("Map").generate_map()
+	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 	
 	leaderboard.load_players(players)
 	leaderboard.resize_background_properly()
 
-func _input(ev: InputEvent) -> void:
+func _input(ev):
 	
 	if !OS.is_debug_build(): return
 	
-	if ev is InputEventKey and not (ev as InputEventKey).echo:
-		match (ev as InputEventKey).keycode:
+	if ev is InputEventKey and not ev.echo:
+		match ev.keycode:
 			KEY_1:
 				curr_player = 0
 			KEY_2:
@@ -50,7 +49,7 @@ func _input(ev: InputEvent) -> void:
 			KEY_3:
 				curr_player = 2
 	
-func cell_clicked() -> void:
+func cell_clicked():
 	state = State.EXPLOSIONS
 	
 func _process(_delta: float) -> void:
@@ -60,13 +59,13 @@ func _process(_delta: float) -> void:
 	
 	if check_next_player(): next_player()
 
-func check_next_player() -> bool:
+func check_next_player():
 	
 	var game_node: GameManager = get_tree().current_scene
 	
 	return game_node.flying_blocks_container.get_children().size() == 0
 		
-func next_player() -> void:
+func next_player():
 	state = State.PLAYER_MOVE
 	
 	curr_player += 1
@@ -89,7 +88,7 @@ func next_player() -> void:
 	
 	bg.self_modulate = color
 
-func check_can_player_place_a_block(pId: int) -> bool:
+func check_can_player_place_a_block(pId: int):
 	for cell in cells:
 		if cell.is_blocked:
 			continue
@@ -100,7 +99,7 @@ func check_can_player_place_a_block(pId: int) -> bool:
 	
 	return false
 
-func handle_players() -> void:
+func handle_players():
 	
 	update_player_leaderboard()
 	
@@ -111,7 +110,7 @@ func handle_players() -> void:
 	
 	if curr_turn < 1: return
 	
-	var blocks : Array[Node] = get_node('/root/MainGame/FlyingBlocksContainer').get_children()
+	#var blocks : Array[Node] = get_node('/root/MainGame/FlyingBlocksContainer').get_children()
 	
 	for pId in range(players.size()): #player dies if there're no his cells
 		if players[pId].blocks_count == 0:
@@ -138,9 +137,9 @@ func handle_players() -> void:
 	if players_active < 2:
 		
 		game_ended = true
-		(%GameWinMenu as GameWinMenu).win_player(last_player)
+		%GameWinMenu.win_player(last_player)
 
-func update_player_leaderboard() -> void:
+func update_player_leaderboard():
 	var cells_occupied: Array[int] = []
 	var blocks_counts: Array[int] = []
 	
@@ -152,7 +151,7 @@ func update_player_leaderboard() -> void:
 
 #UI FUNCTIONS
 
-func _toggle_pause() -> void:
+func _toggle_pause():
 	_set_paused(not paused)
 
 func _set_paused(value: bool) -> void:
@@ -169,8 +168,8 @@ func _go_to_main_menu() -> void:
 	get_tree().change_scene_to_file('res://Menus/MainMenu/MainMenu.tscn')
 
 func hide_game_win_menu() -> void:
-	(%GameWinMenu as Control).hide()
-	(%PauseButton as Control).show()
+	%GameWinMenu.hide()
+	%PauseButton.show()
 
 func saturate_player_color(color: Color) -> Color:
 	

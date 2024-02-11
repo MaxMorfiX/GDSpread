@@ -1,7 +1,6 @@
 extends Node2D
-class_name MapGenerator
 
-const Cell = preload('res://Game/Cell/cell.tscn')
+const CellScene = preload('res://Game/Cell/cell.tscn')
 
 var step_size: float = 360*1.5
 
@@ -50,7 +49,7 @@ func generate_map() -> Array[Cell]:
 
 func generate_cell(raw_x: int, raw_y: int) -> Cell:
 	
-	var cell: Cell = Cell.instantiate()
+	var cell: Cell = CellScene.instantiate()
 	
 	var pos: Vector2 = Vector2(raw_x, raw_y)
 	pos *= step_size

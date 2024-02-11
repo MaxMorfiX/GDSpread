@@ -1,8 +1,8 @@
 extends Area2D
 class_name Block
 
-const Cell = preload('res://Game/Cell/cell.tscn')
-const GameManager = preload('res://Game/Main/game.gd')
+#const Cell = preload('res://Game/Cell/cell.tscn')
+#const GameManager = preload('res://Game/Main/game.gd')
 
 @onready var game: GameManager = get_tree().current_scene
 @onready var sprite: Sprite2D = get_node("Sprite2D")
@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_flying:
-		var offset := velocity*delta
+		var offset: Vector2 = velocity*delta
 		
 		position += offset
 		distance_flew += offset.length()
@@ -41,7 +41,7 @@ func add_to_cell(cell: Cell) -> void:
 	get_parent().remove_child(self)
 	cell.add_block(self)
 
-func set_player(player_id: int) -> void:
+func set_player(player_id: int):
 	
 	var recent_player: int = player
 	

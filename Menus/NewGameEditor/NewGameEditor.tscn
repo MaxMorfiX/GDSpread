@@ -128,6 +128,9 @@ theme_override_font_sizes/font_size = 60
 shortcut = SubResource("Shortcut_n32sa")
 text = "    Play    "
 
+[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer/SubtractButton" to="." method="_change_players_count" binds= [-1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer2/AddButton" to="." method="_change_players_count" binds= [1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer/SubtractButton" to="." method="_change_map_size" binds= [-1]]

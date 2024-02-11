@@ -7,7 +7,7 @@ var speed: float = 0.05
 
 var animatedColor: Color = Color(0, 0, 0)
 
-func _process(delta: float) -> void:
+func _process(delta):
 	hue += speed * delta
 	if hue > 1.0:
 		hue -= 1.0

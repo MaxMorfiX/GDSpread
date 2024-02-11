@@ -2,8 +2,8 @@
 
 extends Sprite2D
 
-@export var size: int = 190
-@export var radius: int = 45
+@export var size: float = 190
+@export var radius: float = 45
 
 func _draw() -> void:
 	

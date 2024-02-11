@@ -1,15 +1,15 @@
 extends Area2D
 class_name Cell
 
-const Block = preload('res://Game/Block/block.tscn')
-const BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
-const GameManager = preload('res://Game/Main/game.gd')
+const BlockScene = preload('res://Game/Block/block.tscn')
+#const BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
+#const GameManager = preload('res://Game/Main/game.gd')
 
 
-var is_blocked: bool = false
-var player: int = 0
-var energy: int = 0
-var max_energy: int = 4
+var is_blocked : bool = false
+var player : int = 0
+var energy : int = 0
+var max_energy : int = 4
 
 @onready var game: GameManager = get_tree().current_scene
 @onready var cycle_node : Sprite2D = get_node("Cycle")
@@ -22,21 +22,22 @@ var max_energy: int = 4
 	$BlockContainers/BlockContainer3,
 ]
 
+
 func set_block_containers(containers_to_show: Array[bool]) -> void:
 	
 	max_energy = 0
 		
 	for i in range(containers_to_show.size() - 1, -1, -1):
 		if containers_to_show[i] == false:
-			var container: Node2D = block_container_nodes[i]
+			var container: BlockContainer = block_container_nodes[i]
 			container.queue_free()
 			block_container_nodes.pop_at(i)
 		else:
 			max_energy += 1
 
-func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+func _input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton \
-	and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT \
+	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.is_pressed():
 		self.on_click()
 
@@ -51,7 +52,7 @@ func on_click() -> void:
 	
 	game.cell_clicked()
 	
-	var block: Block = Block.instantiate()
+	var block: Block = BlockScene.instantiate()
 	block.set_player(game.curr_player)
 	add_block(block)
 
