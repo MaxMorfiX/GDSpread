@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4s77o3xel6tj"]
+[gd_scene load_steps=13 format=3 uid="uid://4s77o3xel6tj"]
 
 [ext_resource type="Script" path="res://Game/Main/game.gd" id="1_jvlg8"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_eix43"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Game/Main/leaderboard.gd" id="6_dg2gd"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="6_gmugp"]
 [ext_resource type="PackedScene" uid="uid://c654br61enqru" path="res://Game/PlayerScore/PlayeScore.tscn" id="6_ywmhg"]
+[ext_resource type="Script" path="res://Game/Main/tutorial.gd" id="7_dymwb"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_tsk8p"]
 device = -1
@@ -66,6 +67,77 @@ theme = ExtResource("6_gmugp")
 theme_override_font_sizes/font_size = 30
 shortcut = SubResource("Shortcut_b0u66")
 text = "PAUSE"
+
+[node name="LeaderboardCenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("6_dg2gd")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="CanvasLayer/LeaderboardCenterContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.407843)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 172.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Scores:"
+
+[node name="PlayerScore1" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore2" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore3" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore4" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore5" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore6" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="PlayerScore7" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
+layout_mode = 2
+
+[node name="HintCenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_dymwb")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="CanvasLayer/HintCenterContainer"]
+custom_minimum_size = Vector2(260, 320)
+layout_mode = 2
+color = Color(0, 0, 0, 0.407843)
+
+[node name="HintLabel" type="RichTextLabel" parent="CanvasLayer/HintCenterContainer/BackgroundColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 260.0
+offset_bottom = 310.0
+theme_override_colors/default_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_font_sizes/normal_font_size = 27
+text = "Welcome to Spread! This is filler text. It surves no purpose other than just look cool so that it looks cool. filler text. filler text. that's how you play"
 
 [node name="GameWinMenu" type="VBoxContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -135,52 +207,6 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "RESTART"
-
-[node name="LeaderboardCenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-script = ExtResource("6_dg2gd")
-
-[node name="BackgroundColorRect" type="ColorRect" parent="CanvasLayer/LeaderboardCenterContainer"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.407843)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 172.0
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 50
-text = "Scores:"
-
-[node name="PlayerScore1" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
-
-[node name="PlayerScore2" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
-
-[node name="PlayerScore3" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
-
-[node name="PlayerScore4" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
-
-[node name="PlayerScore5" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
-
-[node name="PlayerScore6" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
-
-[node name="PlayerScore7" parent="CanvasLayer/LeaderboardCenterContainer/BackgroundColorRect/VBoxContainer" instance=ExtResource("6_ywmhg")]
-layout_mode = 2
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3

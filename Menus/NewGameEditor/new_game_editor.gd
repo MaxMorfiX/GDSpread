@@ -27,6 +27,7 @@ func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Game/Main/game.tscn")
 
 func _ready() -> void:
+	GameSettings.gamemode = GameSettings.GAMEMODE.CLASSIC
 	players_count_node.text = "Players: " + str(GameSettings.players_count)
 	map_size_node.text = "Map Size: " + str(GameSettings.map_size)
 	

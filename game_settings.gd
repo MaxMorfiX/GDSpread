@@ -4,7 +4,7 @@ const player_color_saturation_factor: float = 0.35
 
 #const Player = preload("res://Game/player.gd")
 
-enum GAMEMODE {CLASSIC, BLOCKED_CELLS}
+enum GAMEMODE {CLASSIC, BLOCKED_CELLS, TUTORIAL}
 
 
 var max_players : int = 7

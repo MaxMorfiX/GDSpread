@@ -19,7 +19,8 @@ var cells: Array[Cell]
 
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
 @onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
-@onready var leaderboard: Control = get_node('CanvasLayer/LeaderboardCenterContainer')
+@onready var leaderboard: Leaderboard = get_node('CanvasLayer/LeaderboardCenterContainer')
+@onready var tutorial: Tutorial = get_node('CanvasLayer/HintCenterContainer')
 
 
 func _ready() -> void:
@@ -58,13 +59,14 @@ func _process(_delta: float) -> void:
 	if state != State.EXPLOSIONS: return
 	
 	if check_next_player(): next_player()
+	else: tutorial.cell_exploded()
 
 func check_next_player():
 	
 	var game_node: GameManager = get_tree().current_scene
 	
 	return game_node.flying_blocks_container.get_children().size() == 0
-		
+
 func next_player():
 	state = State.PLAYER_MOVE
 	
@@ -73,6 +75,9 @@ func next_player():
 	if curr_player >= players.size():
 		curr_player = 0
 		curr_turn += 1
+		
+		if curr_turn == 1:
+			tutorial.first_round_was_played()
 	
 	if !players[curr_player].is_active:
 		next_player()
@@ -87,6 +92,8 @@ func next_player():
 	color = saturate_player_color(color)
 	
 	bg.self_modulate = color
+	
+	tutorial.next_player_started()
 
 func check_can_player_place_a_block(pId: int):
 	for cell in cells:

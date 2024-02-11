@@ -1,4 +1,5 @@
 extends CenterContainer
+class_name Leaderboard
 
 #const PlayerScoreLabel = preload("res://Game/PlayerScore/player_score.gd")
 #const GameManager = preload("res://Game/Main/game.gd")

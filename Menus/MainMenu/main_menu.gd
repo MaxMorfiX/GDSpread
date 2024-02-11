@@ -14,3 +14,10 @@ func _ready() -> void:
 	
 	if os == "HTML5" or os == "Web":
 		$CenterContainer/VBoxContainer/ExitButton.hide()
+
+
+func _on_tutorial_button_pressed() -> void:
+	GameSettings.players_count = 2
+	GameSettings.map_size = 3
+	GameSettings.gamemode = GameSettings.GAMEMODE.TUTORIAL
+	get_tree().change_scene_to_file("res://Game/Main/game.tscn")
