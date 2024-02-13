@@ -17,7 +17,8 @@ var paused: bool = false
 #const Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
-var last_state: Dictionary = {}
+var curr_game_state: Dictionary = {}
+var last_game_state: Dictionary = {}
 
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
 @onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
@@ -95,6 +96,8 @@ func next_player():
 	
 	bg.self_modulate = color
 	
+	save_game_state()
+	
 	tutorial.next_player_started()
 
 func check_can_player_place_a_block(pId: int):
@@ -161,7 +164,12 @@ func update_player_leaderboard():
 #region GAME STATE AND UNDO BUTTON MANAGING
 
 func undo():
-	load_game_state_from_dict(last_state)
+	load_game_state_from_dict(last_game_state)
+	curr_game_state = last_game_state
+
+func save_game_state() -> void:
+	last_game_state = curr_game_state
+	curr_game_state = get_curr_game_state_as_dict()
 
 func load_game_state_from_dict(game_state: Dictionary):
 	
@@ -220,10 +228,6 @@ func cells_array_into_dictionary_array(cells_arr: Array[Cell]) -> Array[Dictiona
 #endregion
 
 #region UI FUNCTIONS
-
-func save_game_temp_func_name():
-	last_state = get_curr_game_state_as_dict()
-	#print(get_curr_game_state_as_dict())
 
 func _toggle_pause():
 	_set_paused(not paused)

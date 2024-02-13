@@ -155,25 +155,7 @@ focus_mode = 0
 theme = ExtResource("6_gmugp")
 theme_override_font_sizes/font_size = 30
 shortcut = SubResource("Shortcut_b0u66")
-text = "SAVE"
-
-[node name="UndoButton2" type="Button" parent="CanvasLayer"]
-custom_minimum_size = Vector2(130, 130)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -376.0
-offset_top = 28.0
-offset_right = -246.0
-offset_bottom = 158.0
-grow_horizontal = 0
-scale = Vector2(0.8, 0.8)
-size_flags_horizontal = 4
-focus_mode = 0
-theme = ExtResource("6_gmugp")
-theme_override_font_sizes/font_size = 30
-shortcut = SubResource("Shortcut_b0u66")
-text = "LOAD"
+text = "UNDO"
 
 [node name="GameWinMenu" type="VBoxContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -333,8 +315,7 @@ theme_override_font_sizes/font_size = 30
 text = "RESTART"
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_toggle_pause"]
-[connection signal="pressed" from="CanvasLayer/UndoButton" to="." method="save_game_temp_func_name"]
-[connection signal="pressed" from="CanvasLayer/UndoButton2" to="." method="undo"]
+[connection signal="pressed" from="CanvasLayer/UndoButton" to="." method="undo"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer2/HideButton" to="." method="hide_game_win_menu"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]
