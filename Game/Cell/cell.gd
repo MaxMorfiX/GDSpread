@@ -5,7 +5,6 @@ const BlockScene = preload('res://Game/Block/block.tscn')
 #const BlockContainer = preload('res://Game/Cell/BlockContainer/block_container.tscn')
 #const GameManager = preload('res://Game/Main/game.gd')
 
-
 var is_blocked : bool = false
 var player : int = 0
 var energy : int = 0
@@ -73,6 +72,9 @@ func add_block(block: Block) -> void:
 	set_player(block.player)
 	
 	if energy >= max_energy:
+		#print("----------------------")
+		#print("en    " + str(energy))
+		#print("max   " + str(max_energy))
 		explode()
 	
 func explode() -> void:
@@ -106,3 +108,36 @@ func set_player(player_id: int) -> void:
 func block_cell() -> void:
 	is_blocked = true
 	grating.show()
+
+func to_dict() -> Dictionary:
+	return {
+		"is_blocked": is_blocked,
+		"player": player,
+		"energy": energy
+	}
+
+func load_data_from_dict(dict: Dictionary) -> void:
+	
+	clear_block_containers()
+	
+	cycle_node.hide()
+	
+	energy = 0
+	
+	#print(dict.player)
+	
+	for i in range(dict.energy):
+		
+		var block: Block = BlockScene.instantiate()
+		block.set_player(dict.player)
+		
+		add_block(block)
+	
+	is_blocked = dict.is_blocked
+	set_player(dict.player)
+	#energy = dict.energy
+
+func clear_block_containers() -> void:
+	for container in block_container_nodes:
+		for child in container.get_children():
+			child.queue_free()

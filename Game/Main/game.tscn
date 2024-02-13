@@ -52,22 +52,6 @@ script = ExtResource("2_sjlhw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseButton" type="Button" parent="CanvasLayer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(130, 130)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -130.0
-offset_bottom = 130.0
-grow_horizontal = 0
-size_flags_horizontal = 4
-focus_mode = 0
-theme = ExtResource("6_gmugp")
-theme_override_font_sizes/font_size = 30
-shortcut = SubResource("Shortcut_b0u66")
-text = "PAUSE"
-
 [node name="LeaderboardCenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -138,6 +122,58 @@ offset_bottom = 310.0
 theme_override_colors/default_color = Color(0.894118, 0.894118, 0.894118, 1)
 theme_override_font_sizes/normal_font_size = 27
 text = "Welcome to Spread! This is filler text. It surves no purpose other than just look cool so that it looks cool. filler text. filler text. that's how you play"
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_bottom = 130.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_gmugp")
+theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_b0u66")
+text = "PAUSE"
+
+[node name="UndoButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -248.0
+offset_top = 13.0
+offset_right = -118.0
+offset_bottom = 143.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_gmugp")
+theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_b0u66")
+text = "SAVE"
+
+[node name="UndoButton2" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -376.0
+offset_top = 28.0
+offset_right = -246.0
+offset_bottom = 158.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("6_gmugp")
+theme_override_font_sizes/font_size = 30
+shortcut = SubResource("Shortcut_b0u66")
+text = "LOAD"
 
 [node name="GameWinMenu" type="VBoxContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -297,6 +333,8 @@ theme_override_font_sizes/font_size = 30
 text = "RESTART"
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_toggle_pause"]
+[connection signal="pressed" from="CanvasLayer/UndoButton" to="." method="save_game_temp_func_name"]
+[connection signal="pressed" from="CanvasLayer/UndoButton2" to="." method="undo"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer/HomeButton" to="." method="_go_to_main_menu"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer2/HideButton" to="." method="hide_game_win_menu"]
 [connection signal="pressed" from="CanvasLayer/GameWinMenu/CenterContainer/HBoxContainer/AspectRatioContainer3/RestartButton" to="." method="_restart_game"]

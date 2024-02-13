@@ -17,6 +17,8 @@ var paused: bool = false
 #const Cell = preload('res://Game/Cell/cell.tscn')
 var cells: Array[Cell]
 
+var last_state: Dictionary = {}
+
 @onready var flying_blocks_container : Node2D = get_node('FlyingBlocksContainer')
 @onready var pause_menu : Control = get_node('CanvasLayer/PauseMenu')
 @onready var leaderboard: Leaderboard = get_node('CanvasLayer/LeaderboardCenterContainer')
@@ -156,7 +158,72 @@ func update_player_leaderboard():
 	
 	leaderboard.update_player_scores(cells_occupied, blocks_counts)
 
-#UI FUNCTIONS
+#region GAME STATE AND UNDO BUTTON MANAGING
+
+func undo():
+	load_game_state_from_dict(last_state)
+
+func load_game_state_from_dict(game_state: Dictionary):
+	
+	for child in flying_blocks_container.get_children():
+		child.queue_free()
+	
+	#print("-----------------------------------------")
+	#print(game_state)
+	
+	curr_player = game_state.curr_player
+	curr_turn = game_state.curr_turn
+	
+	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
+	
+	for i in range(game_state.players.size()):
+		#print(game_state.players[i])
+		players[i] = Player.from_dict(game_state.players[i])
+	
+	#print(players_array_into_dictionary_array(players))
+	
+	leaderboard.load_players(players)
+	
+	for i in range(cells.size()):
+		
+		var cell: Cell = cells[i]
+		var dict: Dictionary = game_state.cells[i]
+		
+		cell.load_data_from_dict(dict)
+
+func get_curr_game_state_as_dict():
+	
+	return {
+		"curr_player": curr_player,
+		"curr_turn": curr_turn,
+		"players": players_array_into_dictionary_array(players),
+		"cells": cells_array_into_dictionary_array(cells)
+	}
+
+func players_array_into_dictionary_array(players_arr: Array[Player]) -> Array[Dictionary]:
+	
+	var ret_arr: Array[Dictionary] = []
+	
+	for player in players_arr:
+		ret_arr.push_back(player.to_dict())
+		
+	return ret_arr
+
+func cells_array_into_dictionary_array(cells_arr: Array[Cell]) -> Array[Dictionary]:
+	var ret_arr: Array[Dictionary] = []
+	
+	for cell in cells_arr:
+		ret_arr.push_back(cell.to_dict())
+	
+	return ret_arr
+
+#endregion
+
+#region UI FUNCTIONS
+
+func save_game_temp_func_name():
+	last_state = get_curr_game_state_as_dict()
+	#print(get_curr_game_state_as_dict())
 
 func _toggle_pause():
 	_set_paused(not paused)
@@ -185,3 +252,5 @@ func saturate_player_color(color: Color) -> Color:
 	col.s -= GameSettings.player_color_saturation_factor
 	
 	return col
+
+#endregion

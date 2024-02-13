@@ -6,9 +6,7 @@ const player_color_saturation_factor: float = 0.35
 
 enum GAMEMODE {CLASSIC, BLOCKED_CELLS, TUTORIAL}
 
-
 var max_players : int = 7
-
 
 var gamemode : GAMEMODE = GAMEMODE.CLASSIC
 var players : Array[Player]

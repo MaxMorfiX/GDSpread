@@ -17,7 +17,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameSettings="*res://game_settings.gd"
+GameSettings="*res://Game/game_settings.gd"
+GamesaveManager="*res://Game/gamesave_manager.gd"
 
 [display]
 
