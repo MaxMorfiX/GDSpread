@@ -16,7 +16,7 @@ var curr_phrase_id: int = 0
 
 func _ready() -> void:
 	
-	print(GameSettings.gamemode)
+	print("gamemode: " + str(GameSettings.gamemode))
 	
 	if GameSettings.gamemode != GameSettings.GAMEMODE.TUTORIAL:
 		hide()

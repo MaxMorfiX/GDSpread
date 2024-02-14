@@ -12,6 +12,7 @@ func win_player(player: int) -> void:
 	show()
 	
 	%PauseButton.hide()
+	%UndoButton.hide()
 	
 	print("player " + str(player) + " won the game!")
 

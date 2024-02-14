@@ -39,6 +39,9 @@ func _ready() -> void:
 	
 	leaderboard.load_players(players)
 	leaderboard.resize_background_properly()
+	
+	curr_game_state = get_curr_game_state_as_dict()
+	last_game_state = curr_game_state
 
 func _input(ev):
 	
@@ -55,6 +58,7 @@ func _input(ev):
 	
 func cell_clicked():
 	state = State.EXPLOSIONS
+	last_game_state = curr_game_state
 	
 func _process(_delta: float) -> void:
 	handle_players()
@@ -71,6 +75,7 @@ func check_next_player():
 	return game_node.flying_blocks_container.get_children().size() == 0
 
 func next_player():
+	
 	state = State.PLAYER_MOVE
 	
 	curr_player += 1
@@ -134,7 +139,7 @@ func handle_players():
 	var players_active : int = 0
 	var last_player : int = 0 #only used when some player won the game
 	
-	for pId in range(players.size()):
+	for pId in range(players.size()): #counting how many players are still alive
 		
 		var player: Player = players[pId]
 		
@@ -168,29 +173,29 @@ func undo():
 	curr_game_state = last_game_state
 
 func save_game_state() -> void:
-	last_game_state = curr_game_state
+	#last_game_state = curr_game_state
 	curr_game_state = get_curr_game_state_as_dict()
+	
+	#print("last state =           " + str(last_game_state))
+	#print("--------------------------------------------")
+	#print("current state =           " + str(curr_game_stte))
+	#print("saving players =           " + str(curr_game_state.players))
 
 func load_game_state_from_dict(game_state: Dictionary):
+	
+	state = State.PLAYER_MOVE
 	
 	for child in flying_blocks_container.get_children():
 		child.queue_free()
 	
 	#print("-----------------------------------------")
 	#print(game_state)
+	#print("loading players = " + str(game_state.players))
 	
 	curr_player = game_state.curr_player
 	curr_turn = game_state.curr_turn
 	
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
-	
-	for i in range(game_state.players.size()):
-		#print(game_state.players[i])
-		players[i] = Player.from_dict(game_state.players[i])
-	
-	#print(players_array_into_dictionary_array(players))
-	
-	leaderboard.load_players(players)
 	
 	for i in range(cells.size()):
 		
@@ -198,6 +203,18 @@ func load_game_state_from_dict(game_state: Dictionary):
 		var dict: Dictionary = game_state.cells[i]
 		
 		cell.load_data_from_dict(dict)
+	
+	for i in range(game_state.players.size()):
+		#print(game_state.players[i])
+		players[i] = Player.from_dict(game_state.players[i])
+		#print_debug(Player.from_dict(game_state.players[i]))
+	
+	#print(players_array_into_dictionary_array(players))
+	#print_debug(players)
+	
+	leaderboard.load_players(players)
+	
+	#print(players)
 
 func get_curr_game_state_as_dict():
 	
@@ -248,6 +265,7 @@ func _go_to_main_menu() -> void:
 func hide_game_win_menu() -> void:
 	%GameWinMenu.hide()
 	%PauseButton.show()
+	#%UndoButton.show()
 
 func saturate_player_color(color: Color) -> Color:
 	

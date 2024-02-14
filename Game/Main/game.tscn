@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4s77o3xel6tj"]
+[gd_scene load_steps=15 format=3 uid="uid://4s77o3xel6tj"]
 
 [ext_resource type="Script" path="res://Game/Main/game.gd" id="1_jvlg8"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_eix43"]
@@ -9,9 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://c654br61enqru" path="res://Game/PlayerScore/PlayeScore.tscn" id="6_ywmhg"]
 [ext_resource type="Script" path="res://Game/Main/tutorial.gd" id="7_dymwb"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_tsk8p"]
+[sub_resource type="InputEventKey" id="InputEventKey_ao4ly"]
 device = -1
 keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_epld7"]
+events = [SubResource("InputEventKey_ao4ly")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tsk8p"]
+device = -1
+keycode = 90
+unicode = 122
 
 [sub_resource type="Shortcut" id="Shortcut_b0u66"]
 events = [SubResource("InputEventKey_tsk8p")]
@@ -136,10 +144,11 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("6_gmugp")
 theme_override_font_sizes/font_size = 30
-shortcut = SubResource("Shortcut_b0u66")
+shortcut = SubResource("Shortcut_epld7")
 text = "PAUSE"
 
 [node name="UndoButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(130, 130)
 anchors_preset = 1
 anchor_left = 1.0

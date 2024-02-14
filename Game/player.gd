@@ -10,7 +10,7 @@ func _init(set_color: Color) -> void:
 	color = set_color
 
 func _to_string() -> String:
-	return JSON.stringify(to_dict())
+	return "{cells: " + str(cells_occupied) + ", blocks: " + str(blocks_count) + "}"
 
 func to_dict() -> Dictionary:
 	return {
@@ -23,8 +23,8 @@ func to_dict() -> Dictionary:
 static func from_dict(dictionary: Dictionary) -> Player:
 	var player: Player = Player.new(dictionary.color)
 	player.color = dictionary.color
-	#player.cells_occupied = dictionary.cells_occupied
-	#player.blocks_count = dictionary.blocks_count
+	player.cells_occupied = dictionary.cells_occupied
+	player.blocks_count = dictionary.blocks_count
 	
 	#print(dictionary)
 	

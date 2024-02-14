@@ -43,6 +43,10 @@ func add_to_cell(cell: Cell) -> void:
 
 func set_player(player_id: int):
 	
+	#print("============================================================================")
+	#print("current player: " + str(player))
+	#print("setting player " + str(player_id) + ", sprite = " + str(!(sprite == null)))
+	
 	var recent_player: int = player
 	
 	player = player_id
@@ -53,6 +57,12 @@ func set_player(player_id: int):
 	
 	game.players[recent_player].blocks_count -= 1
 	
+	#print("-------------------------------------------------------")
+	#
+	#print("subtracting block from player " + str(recent_player) + ", now he has " + str(game.players[recent_player].blocks_count))
+	
 	game.players[player_id].blocks_count += 1
+	
+	#print("adding block to player " + str(player_id) + ", now he has " + str(game.players[player_id].blocks_count))
 	
 	sprite.self_modulate = game.players[player_id].color

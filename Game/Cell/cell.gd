@@ -62,12 +62,14 @@ func add_block(block: Block) -> void:
 	
 	energy+=1
 	
-	game.players[block.player].cells_occupied += 1
+	if energy == 1:
+		game.players[block.player].cells_occupied += 1
+	elif player != block.player:
+		game.players[block.player].cells_occupied += 1
+		game.players[player].cells_occupied -= 1
 	
 	if energy == 1:
 		cycle_node.show()
-	else:
-		game.players[player].cells_occupied -= 1
 	
 	set_player(block.player)
 	
@@ -124,9 +126,13 @@ func load_data_from_dict(dict: Dictionary) -> void:
 	
 	energy = 0
 	
-	#print(dict.player)
+	#print("----------------------------------------------------")
+	#print("loading " + str(dict))
+	#print(game.players)
 	
 	for i in range(dict.energy):
+		
+		#print("i: " + str(i) + ", players: " + str(game.players))
 		
 		var block: Block = BlockScene.instantiate()
 		block.set_player(dict.player)
@@ -136,6 +142,8 @@ func load_data_from_dict(dict: Dictionary) -> void:
 	is_blocked = dict.is_blocked
 	set_player(dict.player)
 	#energy = dict.energy
+	
+	#print(game.players)
 
 func clear_block_containers() -> void:
 	for container in block_container_nodes:
