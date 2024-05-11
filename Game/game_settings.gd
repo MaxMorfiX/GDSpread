@@ -1,12 +1,11 @@
 extends Node
 
+const max_players : int = 7
 const player_color_saturation_factor: float = 0.35
 
 #const Player = preload("res://Game/player.gd")
 
 enum GAMEMODE {CLASSIC, BLOCKED_CELLS, TUTORIAL}
-
-var max_players : int = 7
 
 var gamemode : GAMEMODE = GAMEMODE.CLASSIC
 var players : Array[Player]

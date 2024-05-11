@@ -174,6 +174,7 @@ func undo():
 
 func save_game_state() -> void:
 	#last_game_state = curr_game_state
+	
 	curr_game_state = get_curr_game_state_as_dict()
 	
 	#print("last state =           " + str(last_game_state))
