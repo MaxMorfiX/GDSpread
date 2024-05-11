@@ -27,10 +27,15 @@ func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Game/Main/game.tscn")
 
 func _ready() -> void:
-	GameSettings.gamemode = GameSettings.GAMEMODE.CLASSIC
+	
+	var settings: Dictionary = GamesaveManager.load_dict().game_settings
+	
+	GameSettings.gamemode = settings.gamemode
+	GameSettings.players_count = settings.players_count
+	GameSettings.map_size = settings.map_size
 	players_count_node.text = "Players: " + str(GameSettings.players_count)
 	map_size_node.text = "Map Size: " + str(GameSettings.map_size)
-	
+
 #	blocked_cells_chance_node.value = GameSettings.blocked_cell_chance*100
 #	gamemode_button.select(GameSettings.gamemode)
 

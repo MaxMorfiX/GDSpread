@@ -65,5 +65,5 @@ func to_dict() -> Dictionary:
 	return {
 		"gamemode": gamemode,
 		"map_size": map_size,
-		#"players": players,
+		"players_count": players_count,
 	}

@@ -42,6 +42,8 @@ func _ready() -> void:
 	
 	curr_game_state = get_curr_game_state_as_dict()
 	last_game_state = curr_game_state
+	
+	save_game()
 
 func _input(ev):
 	

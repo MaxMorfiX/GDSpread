@@ -9,7 +9,7 @@ func _on_play_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
-func _ready() -> void:	
+func _ready() -> void:
 	
 	var os: String = OS.get_name()
 	
