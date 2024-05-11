@@ -61,4 +61,9 @@ func _input(_event):
 				previous_window = DisplayServer.WINDOW_MODE_MAXIMIZED
 			DisplayServer.window_set_mode(previous_window)
 
-#I still didn't implemented saving
+func to_dict() -> Dictionary:
+	return {
+		"gamemode": gamemode,
+		"map_size": map_size,
+		#"players": players,
+	}

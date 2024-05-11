@@ -102,6 +102,7 @@ func next_player():
 	bg.self_modulate = color
 	
 	save_game_state()
+	save_game()
 	
 	tutorial.next_player_started()
 
@@ -169,6 +170,7 @@ func update_player_leaderboard():
 #region GAME STATE AND UNDO BUTTON MANAGING
 
 func undo():
+	
 	load_game_state_from_dict(last_game_state)
 	curr_game_state = last_game_state
 
@@ -181,6 +183,15 @@ func save_game_state() -> void:
 	#print("--------------------------------------------")
 	#print("current state =           " + str(curr_game_stte))
 	#print("saving players =           " + str(curr_game_state.players))
+
+func save_game() -> void:
+	
+	var dict_to_save: Dictionary = {
+		"game_state": curr_game_state,
+		"game_settings": GameSettings.to_dict()
+	}
+	
+	GamesaveManager.save_dict(dict_to_save)
 
 func load_game_state_from_dict(game_state: Dictionary):
 	
