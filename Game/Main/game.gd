@@ -100,8 +100,8 @@ func next_player():
 	
 	var color: Color = players[curr_player].color
 	color = saturate_player_color(color)
-	
-	bg.self_modulate = color
+	var bg_tween: Tween = get_tree().create_tween()
+	bg_tween.tween_property(bg, "self_modulate", color, 0.5)
 	
 	save_game_state()
 	save_game()
