@@ -34,7 +34,7 @@ func _ready() -> void:
 	
 	players.shuffle()
 	
-	cells = get_node("Map").generate_map()
+	cells = get_node('Map').generate_map()
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 	
 	leaderboard.load_players(players)
@@ -96,12 +96,12 @@ func next_player():
 		if !check_can_player_place_a_block(curr_player):
 			next_player()
 	
-	var bg: TextureRect = get_tree().current_scene.get_node("BackgroundCanvas/Background")
+	var bg: TextureRect = get_tree().current_scene.get_node('BackgroundCanvas/Background')
 	
 	var color: Color = players[curr_player].color
 	color = saturate_player_color(color)
 	var bg_tween: Tween = get_tree().create_tween()
-	bg_tween.tween_property(bg, "self_modulate", color, 0.5)
+	bg_tween.tween_property(bg, 'self_modulate', color, 0.5)
 	
 	save_game_state()
 	save_game()
@@ -146,13 +146,13 @@ func handle_players():
 		
 		var player: Player = players[pId]
 		
-#		print("player " + str(pId) + " is " + str(player.is_active))
+#		print('player ' + str(pId) + ' is ' + str(player.is_active))
 		
 		if player.is_active:
 			players_active += 1
 			last_player = pId
 			
-#	print("players left: " + str(players_active))
+#	print('players left: ' + str(players_active))
 	
 	if players_active < 2:
 		
@@ -181,16 +181,16 @@ func save_game_state() -> void:
 	
 	curr_game_state = get_curr_game_state_as_dict()
 	
-	#print("last state =           " + str(last_game_state))
-	#print("--------------------------------------------")
-	#print("current state =           " + str(curr_game_stte))
-	#print("saving players =           " + str(curr_game_state.players))
+	#print('last state =           ' + str(last_game_state))
+	#print('--------------------------------------------')
+	#print('current state =           ' + str(curr_game_stte))
+	#print('saving players =           ' + str(curr_game_state.players))
 
 func save_game() -> void:
 	
 	var dict_to_save: Dictionary = {
-		"game_state": curr_game_state,
-		"game_settings": GameSettings.to_dict()
+		'game_state': curr_game_state,
+		'game_settings': GameSettings.to_dict()
 	}
 	
 	GamesaveManager.save_dict(dict_to_save)
@@ -202,9 +202,9 @@ func load_game_state_from_dict(game_state: Dictionary):
 	for child in flying_blocks_container.get_children():
 		child.queue_free()
 	
-	#print("-----------------------------------------")
+	#print('-----------------------------------------')
 	#print(game_state)
-	#print("loading players = " + str(game_state.players))
+	#print('loading players = ' + str(game_state.players))
 	
 	curr_player = game_state.curr_player
 	curr_turn = game_state.curr_turn
@@ -233,10 +233,10 @@ func load_game_state_from_dict(game_state: Dictionary):
 func get_curr_game_state_as_dict():
 	
 	return {
-		"curr_player": curr_player,
-		"curr_turn": curr_turn,
-		"players": players_array_into_dictionary_array(players),
-		"cells": cells_array_into_dictionary_array(cells)
+		'curr_player': curr_player,
+		'curr_turn': curr_turn,
+		'players': players_array_into_dictionary_array(players),
+		'cells': cells_array_into_dictionary_array(cells)
 	}
 
 func players_array_into_dictionary_array(players_arr: Array[Player]) -> Array[Dictionary]:
