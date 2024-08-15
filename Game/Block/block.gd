@@ -31,6 +31,10 @@ func throw(direction: Vector2) -> Block:
 	return self
 
 func _on_area_entered(area: Area2D) -> void:
+	
+	#if area is Cell and area.name == "@Area2D@15":
+		#return
+	
 	if is_flying && area is Cell && distance_flew > 30:
 		is_flying = false
 		distance_flew = 0
