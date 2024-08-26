@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf6kgg8e76re"]
+[gd_scene load_steps=10 format=3 uid="uid://cf6kgg8e76re"]
 
 [ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_j2sp3"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_m7xu2"]
@@ -16,6 +16,12 @@ keycode = 4194309
 
 [sub_resource type="Shortcut" id="Shortcut_n32sa"]
 events = [SubResource("InputEventKey_thcqu"), SubResource("InputEventKey_cr2i7")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88ggd"]
+bg_color = Color(0, 0, 0, 0.780392)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f8mn7"]
+font_size = 70
 
 [node name="NewGameEditor" type="CanvasLayer"]
 script = ExtResource("1_j2sp3")
@@ -130,6 +136,62 @@ text = "    Play    "
 
 [node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="UnfinishedGamePanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_88ggd")
+
+[node name="CenterContainer" type="CenterContainer" parent="UnfinishedGamePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnfinishedGamePanel/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "An unfinished game was found
+Would you like to resume it?"
+label_settings = SubResource("LabelSettings_f8mn7")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="YesButton" type="Button" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme = ExtResource("3_msk1f")
+theme_override_font_sizes/font_size = 50
+text = "Yes
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="NoButton" type="Button" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme = ExtResource("3_msk1f")
+theme_override_font_sizes/font_size = 50
+text = "No"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer/SubtractButton" to="." method="_change_players_count" binds= [-1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer2/AddButton" to="." method="_change_players_count" binds= [1]]
