@@ -160,7 +160,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UnfinishedGamePanel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "An unfinished game was found
-Would you like to resume it?"
+Would you like to continue it?"
 label_settings = SubResource("LabelSettings_f8mn7")
 horizontal_alignment = 1
 

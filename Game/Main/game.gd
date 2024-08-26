@@ -45,9 +45,11 @@ func _ready() -> void:
 	last_game_state = curr_game_state
 	
 	if GameSettings.resume_unfinished_game:
+		GameSettings.resume_unfinished_game = false
 		var loaded_dict: Dictionary = GamesaveManager.load_dict()
 		load_game_state_from_dict(loaded_dict.game_state)
 	
+	save_game_state()
 	save_game()
 
 func _input(ev):
@@ -162,6 +164,7 @@ func handle_players():
 	if players_active < 2:
 		
 		game_ended = true
+		save_game()
 		%GameWinMenu.win_player(last_player)
 
 func update_player_leaderboard():
@@ -180,6 +183,7 @@ func undo():
 	
 	load_game_state_from_dict(last_game_state)
 	curr_game_state = last_game_state
+	save_game()
 
 func save_game_state() -> void:
 	#last_game_state = curr_game_state
@@ -197,6 +201,9 @@ func save_game() -> void:
 		'game_state': curr_game_state,
 		'game_settings': GameSettings.to_dict()
 	}
+	
+	if game_ended or (curr_turn == 0 and curr_player == 0):
+		dict_to_save.game_state = {}
 	
 	GamesaveManager.save_dict(dict_to_save)
 

@@ -40,4 +40,5 @@ func _ready() -> void:
 
 func is_there_unfinished_game() -> bool:
 	var dict: Dictionary = load_dict()
+	#print('dict game state ', dict.game_state)
 	return dict.game_state != {}
