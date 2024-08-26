@@ -28,6 +28,8 @@ var last_game_state: Dictionary = {}
 
 func _ready() -> void:
 	
+	var loaded_dict: Dictionary = GamesaveManager.load_dict()
+	
 	#I do it because godot doesn't сopy players own objects
 	for player in GameSettings.players:
 		players.append(Player.new(player.color))
@@ -42,6 +44,8 @@ func _ready() -> void:
 	
 	curr_game_state = get_curr_game_state_as_dict()
 	last_game_state = curr_game_state
+	
+	load_game_state_from_dict(loaded_dict.game_state)
 	
 	save_game()
 
@@ -209,6 +213,14 @@ func load_game_state_from_dict(game_state: Dictionary):
 	curr_player = game_state.curr_player
 	curr_turn = game_state.curr_turn
 	
+	for i in range(game_state.players.size()):
+		#print_debug(players)
+		#print(game_state.players[i])
+		players[i] = Player.new(game_state.players[i].color)
+		#players[i] = Player.from_dict(game_state.players[i])
+		#players.append(Player.from_dict(game_state.players[i]))
+		#print_debug(Player.from_dict(game_state.players[i]))
+	
 	get_node('BackgroundCanvas/Background').self_modulate = saturate_player_color(players[curr_player].color)
 	
 	for i in range(cells.size()):
@@ -217,11 +229,6 @@ func load_game_state_from_dict(game_state: Dictionary):
 		var dict: Dictionary = game_state.cells[i]
 		
 		cell.load_data_from_dict(dict)
-	
-	for i in range(game_state.players.size()):
-		#print(game_state.players[i])
-		players[i] = Player.from_dict(game_state.players[i])
-		#print_debug(Player.from_dict(game_state.players[i]))
 	
 	#print(players_array_into_dictionary_array(players))
 	#print_debug(players)

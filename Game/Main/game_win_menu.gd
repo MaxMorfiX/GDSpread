@@ -15,4 +15,3 @@ func win_player(player: int) -> void:
 	%UndoButton.hide()
 	
 	print("player " + str(player) + " won the game!")
-

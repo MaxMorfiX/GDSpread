@@ -67,3 +67,8 @@ func to_dict() -> Dictionary:
 		"map_size": map_size,
 		"players_count": players_count,
 	}
+
+func from_dict(dict: Dictionary) -> void:
+	gamemode = dict.gamemode
+	map_size = dict.map_size
+	players_count = dict.players_count
