@@ -26,6 +26,14 @@ func _change_map_size(amount: int) -> void:
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Game/Main/game.tscn")
 
+func _resume_unfinished_game_pressed() -> void:
+	GameSettings.resume_unfinished_game = true
+	get_tree().change_scene_to_file("res://Game/Main/game.tscn")
+
+func _ignore_unfinished_game_pressed() -> void:
+	GameSettings.resume_unfinished_game = false
+	$UnfinishedGamePanel.hide()
+
 func _ready() -> void:
 	
 	var settings: Dictionary = GamesaveManager.load_dict().game_settings
@@ -35,6 +43,11 @@ func _ready() -> void:
 	GameSettings.map_size = settings.map_size
 	players_count_node.text = "Players: " + str(GameSettings.players_count)
 	map_size_node.text = "Map Size: " + str(GameSettings.map_size)
+	
+	if GamesaveManager.is_there_unfinished_game():
+		$UnfinishedGamePanel.show()
+
+#region UNUSED FEATURES
 
 #	blocked_cells_chance_node.value = GameSettings.blocked_cell_chance*100
 #	gamemode_button.select(GameSettings.gamemode)
@@ -59,3 +72,5 @@ func _ready() -> void:
 #
 #func _on_map_size_value_changed(value: float) -> void:
 #	GameSettings.map_size = int(value)
+
+#endregion

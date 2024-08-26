@@ -200,3 +200,5 @@ text = "No"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer/SubtractButton" to="." method="_change_map_size" binds= [-1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer2/AddButton" to="." method="_change_map_size" binds= [1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/YesButton" to="." method="_resume_unfinished_game_pressed"]
+[connection signal="pressed" from="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/NoButton" to="." method="_ignore_unfinished_game_pressed"]

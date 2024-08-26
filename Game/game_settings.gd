@@ -24,6 +24,8 @@ var players_count : int :
 	get:
 		return players.size()
 
+var resume_unfinished_game: bool = false
+
 func _init() -> void:
 	players_count = 2
 

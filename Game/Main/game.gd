@@ -28,7 +28,6 @@ var last_game_state: Dictionary = {}
 
 func _ready() -> void:
 	
-	var loaded_dict: Dictionary = GamesaveManager.load_dict()
 	
 	#I do it because godot doesn't сopy players own objects
 	for player in GameSettings.players:
@@ -45,7 +44,9 @@ func _ready() -> void:
 	curr_game_state = get_curr_game_state_as_dict()
 	last_game_state = curr_game_state
 	
-	load_game_state_from_dict(loaded_dict.game_state)
+	if GameSettings.resume_unfinished_game:
+		var loaded_dict: Dictionary = GamesaveManager.load_dict()
+		load_game_state_from_dict(loaded_dict.game_state)
 	
 	save_game()
 

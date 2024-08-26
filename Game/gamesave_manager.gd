@@ -37,3 +37,7 @@ func _ready() -> void:
 		"game_state": {},
 		"game_settings": GameSettings.to_dict()
 	})
+
+func is_there_unfinished_game() -> bool:
+	var dict: Dictionary = load_dict()
+	return dict.game_state != {}
