@@ -45,7 +45,10 @@ func _ready() -> void:
 	map_size_node.text = "Map Size: " + str(GameSettings.map_size)
 	
 	if GamesaveManager.is_there_unfinished_game():
-		$UnfinishedGamePanel.show()
+		$RecoverUnfinishedGameButton.show()
+
+func _show_unfinished_game_panel():
+	$UnfinishedGamePanel.show()
 
 #region UNUSED FEATURES
 

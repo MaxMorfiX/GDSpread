@@ -195,6 +195,20 @@ theme = ExtResource("3_msk1f")
 theme_override_font_sizes/font_size = 50
 text = "No"
 
+[node name="RecoverUnfinishedGameButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 70.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme = ExtResource("3_msk1f")
+theme_override_font_sizes/font_size = 45
+text = "!"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer/SubtractButton" to="." method="_change_players_count" binds= [-1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/PlayersChooser/AspectRatioContainer2/AddButton" to="." method="_change_players_count" binds= [1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Parameters/MapSizeChooser/AspectRatioContainer/SubtractButton" to="." method="_change_map_size" binds= [-1]]
@@ -202,3 +216,4 @@ text = "No"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/YesButton" to="." method="_resume_unfinished_game_pressed"]
 [connection signal="pressed" from="UnfinishedGamePanel/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/NoButton" to="." method="_ignore_unfinished_game_pressed"]
+[connection signal="pressed" from="RecoverUnfinishedGameButton" to="." method="_show_unfinished_game_panel"]
