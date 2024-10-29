@@ -238,6 +238,9 @@ func load_game_state_from_dict(game_state: Dictionary):
 		
 		cell.load_data_from_dict(dict)
 	
+	curr_game_state = game_state
+	last_game_state = game_state
+	
 	#print(players_array_into_dictionary_array(players))
 	#print_debug(players)
 	
