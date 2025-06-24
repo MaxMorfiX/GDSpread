@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://4s77o3xel6tj"]
 
-[ext_resource type="Script" path="res://Game/Main/game.gd" id="1_jvlg8"]
+[ext_resource type="Script" uid="uid://eyp3vacklgec" path="res://Game/Main/game.gd" id="1_jvlg8"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_eix43"]
-[ext_resource type="Script" path="res://Game/Main/map_generator.gd" id="2_sjlhw"]
-[ext_resource type="Script" path="res://Game/Main/game_win_menu.gd" id="4_6kf1a"]
-[ext_resource type="Script" path="res://Game/Main/leaderboard.gd" id="6_dg2gd"]
+[ext_resource type="Script" uid="uid://ddfsxc23g0dca" path="res://Game/Main/map_generator.gd" id="2_sjlhw"]
+[ext_resource type="Script" uid="uid://ro6honkbdwxt" path="res://Game/Main/game_win_menu.gd" id="4_6kf1a"]
+[ext_resource type="Script" uid="uid://b3tm0d78xjtn8" path="res://Game/Main/leaderboard.gd" id="6_dg2gd"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="6_gmugp"]
 [ext_resource type="PackedScene" uid="uid://c654br61enqru" path="res://Game/PlayerScore/PlayeScore.tscn" id="6_ywmhg"]
-[ext_resource type="Script" path="res://Game/Main/tutorial.gd" id="7_dymwb"]
+[ext_resource type="Script" uid="uid://crtovld15jnk6" path="res://Game/Main/tutorial.gd" id="7_dymwb"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ao4ly"]
 device = -1

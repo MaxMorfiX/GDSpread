@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://duep3ctnlcttp"]
 
-[ext_resource type="Script" path="res://Game/Cell/cell.gd" id="1_hqkve"]
+[ext_resource type="Script" uid="uid://bwfs2yfynlx0w" path="res://Game/Cell/cell.gd" id="1_hqkve"]
 [ext_resource type="PackedScene" uid="uid://cy7uydnakehvo" path="res://Game/Cell/BlockContainer/block_container.tscn" id="2_bwy67"]
 [ext_resource type="Texture2D" uid="uid://da5cqxlo0i0xs" path="res://Game/Cell/Center.png" id="3_33ajn"]
 [ext_resource type="Texture2D" uid="uid://cnw1fy87sm7w6" path="res://Game/Cell/Border.png" id="4_s5xu1"]
 [ext_resource type="Texture2D" uid="uid://dujufuvuoijbq" path="res://Game/Cell/cycle.png" id="4_v401w"]
 [ext_resource type="Texture2D" uid="uid://bj35kia2slnbh" path="res://Game/Cell/Grating.png" id="6_b8rey"]
-[ext_resource type="Script" path="res://Game/Cell/background.gd" id="7_u3l06"]
+[ext_resource type="Script" uid="uid://d327k5w40ybjv" path="res://Game/Cell/background.gd" id="7_u3l06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkjn7"]
 size = Vector2(390, 390)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf0o1q3l0l201"]
 
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_6ajk0"]
-[ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_uh2qm"]
+[ext_resource type="Script" uid="uid://cehec1dq0mybp" path="res://Menus/Background/background.gd" id="2_uh2qm"]
 
 [node name="BackgroundCanvas" type="CanvasLayer"]
 layer = -1

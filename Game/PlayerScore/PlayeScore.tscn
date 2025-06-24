@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c654br61enqru"]
 
-[ext_resource type="Script" path="res://Game/PlayerScore/PlayerIconCustomColorRect.gd" id="1_mwdjt"]
-[ext_resource type="Script" path="res://Game/PlayerScore/player_score.gd" id="1_vb2w1"]
+[ext_resource type="Script" uid="uid://cxq8qijhsyfoe" path="res://Game/PlayerScore/PlayerIconCustomColorRect.gd" id="1_mwdjt"]
+[ext_resource type="Script" uid="uid://dxb0nv8mwn38r" path="res://Game/PlayerScore/player_score.gd" id="1_vb2w1"]
 
 [node name="PlayerScore" type="HBoxContainer"]
 anchors_preset = 15

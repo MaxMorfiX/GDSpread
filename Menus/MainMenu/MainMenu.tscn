@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c7ntpmxcn7na3"]
 
-[ext_resource type="Script" path="res://Menus/MainMenu/main_menu.gd" id="1_sewdd"]
+[ext_resource type="Script" uid="uid://b2nitj10644tn" path="res://Menus/MainMenu/main_menu.gd" id="1_sewdd"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_r54me"]
-[ext_resource type="Script" path="res://Menus/Background/background.gd" id="3_8niyw"]
+[ext_resource type="Script" uid="uid://cehec1dq0mybp" path="res://Menus/Background/background.gd" id="3_8niyw"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="4_ilmst"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_thcqu"]

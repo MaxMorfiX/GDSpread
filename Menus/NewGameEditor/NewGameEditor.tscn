@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cf6kgg8e76re"]
 
-[ext_resource type="Script" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_j2sp3"]
+[ext_resource type="Script" uid="uid://b86pnqsq5dbn4" path="res://Menus/NewGameEditor/new_game_editor.gd" id="1_j2sp3"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="1_m7xu2"]
-[ext_resource type="Script" path="res://Menus/Background/background.gd" id="2_ifqqj"]
+[ext_resource type="Script" uid="uid://cehec1dq0mybp" path="res://Menus/Background/background.gd" id="2_ifqqj"]
 [ext_resource type="Theme" uid="uid://d4jqd6ed8wxdw" path="res://Menus/new_theme.tres" id="3_msk1f"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_thcqu"]
