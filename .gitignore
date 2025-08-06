@@ -5,3 +5,5 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+
+/android/  # Android build artifacts
