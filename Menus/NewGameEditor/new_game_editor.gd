@@ -46,6 +46,8 @@ func _ready() -> void:
 	
 	if GamesaveManager.is_there_unfinished_game():
 		$RecoverUnfinishedGameButton.show()
+	else:
+		$RecoverUnfinishedGameButton.hide()
 
 func _show_unfinished_game_panel():
 	$UnfinishedGamePanel.show()
