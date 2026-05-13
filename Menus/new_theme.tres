@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d4jqd6ed8wxdw"]
+[gd_resource type="Theme" format=3 uid="uid://d4jqd6ed8wxdw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhjbs"]
 corner_radius_top_left = 20

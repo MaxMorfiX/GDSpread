@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7ntpmxcn7na3"]
+[gd_scene format=3 uid="uid://c7ntpmxcn7na3"]
 
 [ext_resource type="Script" uid="uid://b2nitj10644tn" path="res://Menus/MainMenu/main_menu.gd" id="1_sewdd"]
 [ext_resource type="Texture2D" uid="uid://dp2qcyo7meeyf" path="res://textures/background.png" id="2_r54me"]
@@ -17,10 +17,10 @@ keycode = 4194309
 [sub_resource type="Shortcut" id="Shortcut_ec71l"]
 events = [SubResource("InputEventKey_thcqu"), SubResource("InputEventKey_cr2i7")]
 
-[node name="NewMainMenu" type="CanvasLayer"]
+[node name="NewMainMenu" type="CanvasLayer" unique_id=1492335515]
 script = ExtResource("1_sewdd")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=992551686]
 z_as_relative = false
 texture_filter = 1
 anchors_preset = 15
@@ -32,7 +32,7 @@ texture = ExtResource("2_r54me")
 stretch_mode = 1
 script = ExtResource("3_8niyw")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1496929817]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,10 +40,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_ilmst")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=433196369]
 layout_mode = 2
 
-[node name="GameLogoLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="GameLogoLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=4664100]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -54,33 +54,33 @@ text = "Spread"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=1799291147]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1126555954]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 100
 shortcut = SubResource("Shortcut_ec71l")
 text = "PLAY"
 
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=755850813]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=772990069]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_font_sizes/font_size = 51
 text = "    Exit    "
 
-[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=2047347283]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="CreditsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="CreditsLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1605567089]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -90,7 +90,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 51
 text = "Made by MaxMorfiX"
 
-[node name="TutorialButton" type="Button" parent="."]
+[node name="TutorialButton" type="Button" parent="." unique_id=1430467757]
 offset_left = 30.0
 offset_top = 30.0
 offset_right = 260.0
