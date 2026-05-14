@@ -38,7 +38,9 @@ func _ready() -> void:
 	
 	var settings: Dictionary = GamesaveManager.load_dict().game_settings
 	
-	GameSettings.gamemode = settings.gamemode
+	if settings.gamemode != GameSettings.GAMEMODE.TUTORIAL:
+		GameSettings.gamemode = settings.gamemode
+	
 	GameSettings.players_count = settings.players_count
 	GameSettings.map_size = settings.map_size
 	players_count_node.text = "Players: " + str(GameSettings.players_count)
