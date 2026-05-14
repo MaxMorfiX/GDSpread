@@ -37,7 +37,8 @@ func set_block_containers(containers_to_show: Array[bool]) -> void:
 func _input_event(_viewport, event, _shape_idx) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
-	and event.is_pressed():
+	and event.is_pressed() \
+	and not game.players[game.curr_player].is_ai:
 		self.on_click()
 
 func on_click() -> void:

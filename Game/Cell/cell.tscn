@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://duep3ctnlcttp"]
+[gd_scene format=3 uid="uid://duep3ctnlcttp"]
 
 [ext_resource type="Script" uid="uid://bwfs2yfynlx0w" path="res://Game/Cell/cell.gd" id="1_hqkve"]
 [ext_resource type="PackedScene" uid="uid://cy7uydnakehvo" path="res://Game/Cell/BlockContainer/block_container.tscn" id="2_bwy67"]
@@ -11,51 +11,51 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkjn7"]
 size = Vector2(390, 390)
 
-[node name="Cell" type="Area2D"]
+[node name="Cell" type="Area2D" unique_id=1405847657]
 script = ExtResource("1_hqkve")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1004334395]
 shape = SubResource("RectangleShape2D_nkjn7")
 
-[node name="BlockContainers" type="Node2D" parent="."]
+[node name="BlockContainers" type="Node2D" parent="." unique_id=1134231888]
 
-[node name="BlockContainer0" parent="BlockContainers" instance=ExtResource("2_bwy67")]
+[node name="BlockContainer0" parent="BlockContainers" unique_id=2039793253 instance=ExtResource("2_bwy67")]
 position = Vector2(0, -120)
 
-[node name="BlockContainer1" parent="BlockContainers" instance=ExtResource("2_bwy67")]
+[node name="BlockContainer1" parent="BlockContainers" unique_id=1816187378 instance=ExtResource("2_bwy67")]
 position = Vector2(-120, 0)
 
-[node name="BlockContainer2" parent="BlockContainers" instance=ExtResource("2_bwy67")]
+[node name="BlockContainer2" parent="BlockContainers" unique_id=186520633 instance=ExtResource("2_bwy67")]
 position = Vector2(120, 0)
 
-[node name="BlockContainer3" parent="BlockContainers" instance=ExtResource("2_bwy67")]
+[node name="BlockContainer3" parent="BlockContainers" unique_id=1634640750 instance=ExtResource("2_bwy67")]
 position = Vector2(0, 121)
 
-[node name="Cycle" type="Sprite2D" parent="."]
+[node name="Cycle" type="Sprite2D" parent="." unique_id=1903631531]
 visible = false
 self_modulate = Color(1, 0, 0, 1)
 texture_filter = 1
 texture = ExtResource("4_v401w")
 
-[node name="Center" type="Sprite2D" parent="."]
+[node name="Center" type="Sprite2D" parent="." unique_id=922990050]
 self_modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_33ajn")
 
-[node name="Border" type="Sprite2D" parent="."]
+[node name="Border" type="Sprite2D" parent="." unique_id=788859304]
 visible = false
 modulate = Color(1, 0, 0, 1)
 texture_filter = 1
 texture = ExtResource("4_s5xu1")
 
-[node name="Grating" type="Sprite2D" parent="."]
+[node name="Grating" type="Sprite2D" parent="." unique_id=164707490]
 visible = false
 self_modulate = Color(0.196078, 0.196078, 0.196078, 1)
 texture_filter = 3
 texture = ExtResource("6_b8rey")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1246239681]
 self_modulate = Color(0.66, 0.66, 0.66, 0.631373)
 z_index = -1
 script = ExtResource("7_u3l06")

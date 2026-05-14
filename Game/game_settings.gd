@@ -43,11 +43,15 @@ func create_players(count: int) -> Array[Player]:
 	
 	var plrs: Array[Player] = []
 	
-	for i in range(count):
+	for i in range(count-1): #TEMPORARY LOGIC; CHANGE BACK WHEN DONE TESTING
 		
 		var color: Color = generate_player_color(i, count)
 		
 		plrs.push_back(Player.new(color))
+	
+	var color: Color = generate_player_color(count-1, count)
+		
+	plrs.push_back(Player.new(color, AI.new()))
 		
 	return plrs
 

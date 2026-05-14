@@ -28,10 +28,11 @@ var last_game_state: Dictionary = {}
 
 func _ready() -> void:
 	
-	
 	#I do it because godot doesn't сopy players own objects
 	for player in GameSettings.players:
-		players.append(Player.new(player.color))
+		var ai: AI = null
+		if player.is_ai: ai = player.ai
+		players.append(Player.new(player.color, ai))
 	
 	players.shuffle()
 	
@@ -51,6 +52,8 @@ func _ready() -> void:
 	
 	save_game_state()
 	save_game()
+	
+	handle_ai_move()
 
 func _input(ev):
 	
@@ -103,6 +106,9 @@ func next_player():
 		if !check_can_player_place_a_block(curr_player):
 			next_player()
 	
+	save_game_state()
+	save_game()
+	
 	var bg: TextureRect = get_tree().current_scene.get_node('BackgroundCanvas/Background')
 	
 	var color: Color = players[curr_player].color
@@ -110,10 +116,14 @@ func next_player():
 	var bg_tween: Tween = get_tree().create_tween()
 	bg_tween.tween_property(bg, 'self_modulate', color, 0.5)
 	
-	save_game_state()
-	save_game()
-	
 	tutorial.next_player_started()
+	
+	handle_ai_move()
+
+func handle_ai_move():
+	if players[curr_player].is_ai:
+		var click_pos: int = players[curr_player].ai.your_turn(curr_game_state, curr_player)
+		cells[click_pos].on_click()
 
 func check_can_player_place_a_block(pId: int):
 	for cell in cells:
