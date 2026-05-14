@@ -38,7 +38,7 @@ func update_player_scores(blocks_counts: Array[int], cells_occupied: Array[int])
 	for i in range(blocks_counts.size()):
 		player_scores_displays[i].set_score(blocks_counts[i], cells_occupied[i])
 
-func die_player(pId: int):
+func die_player(pId: int) -> void:
 	player_scores_displays[pId].modulate = Color(1, 1, 1, 0.3)
 #	player_scores_displays[pId].hide()
 #	$BackgroundColorRect/VBoxContainer.update_minimum_size()

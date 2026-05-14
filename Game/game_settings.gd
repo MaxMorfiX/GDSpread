@@ -56,7 +56,7 @@ func create_players(count: int) -> Array[Player]:
 	return plrs
 
 
-func _input(_event):
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		current_window = DisplayServer.window_get_mode()
 		if current_window != DisplayServer.WINDOW_MODE_FULLSCREEN:

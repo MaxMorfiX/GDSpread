@@ -55,7 +55,7 @@ func _ready() -> void:
 	
 	handle_ai_move()
 
-func _input(ev):
+func _input(ev: InputEvent) -> void:
 	
 	if !OS.is_debug_build(): return
 	
@@ -68,7 +68,7 @@ func _input(ev):
 			KEY_3:
 				curr_player = 2
 	
-func cell_clicked():
+func cell_clicked() -> void:
 	state = State.EXPLOSIONS
 	last_game_state = curr_game_state
 	
@@ -80,13 +80,13 @@ func _process(_delta: float) -> void:
 	if check_next_player(): next_player()
 	else: tutorial.cell_exploded()
 
-func check_next_player():
+func check_next_player() -> bool:
 	
 	var game_node: GameManager = get_tree().current_scene
 	
 	return game_node.flying_blocks_container.get_children().size() == 0
 
-func next_player():
+func next_player() -> void:
 	
 	state = State.PLAYER_MOVE
 	
@@ -120,12 +120,12 @@ func next_player():
 	
 	handle_ai_move()
 
-func handle_ai_move():
+func handle_ai_move() -> void:
 	if players[curr_player].is_ai:
 		var click_pos: int = players[curr_player].ai.your_turn(curr_game_state, curr_player)
 		cells[click_pos].on_click()
 
-func check_can_player_place_a_block(pId: int):
+func check_can_player_place_a_block(pId: int) -> bool:
 	for cell in cells:
 		if cell.is_blocked:
 			continue
@@ -136,7 +136,7 @@ func check_can_player_place_a_block(pId: int):
 	
 	return false
 
-func handle_players():
+func handle_players() -> void:
 	
 	update_player_leaderboard()
 	
@@ -177,7 +177,7 @@ func handle_players():
 		save_game()
 		%GameWinMenu.win_player(last_player)
 
-func update_player_leaderboard():
+func update_player_leaderboard() -> void:
 	var cells_occupied: Array[int] = []
 	var blocks_counts: Array[int] = []
 	
@@ -189,7 +189,7 @@ func update_player_leaderboard():
 
 #region GAME STATE AND UNDO BUTTON MANAGING
 
-func undo():
+func undo() -> void:
 	
 	load_game_state_from_dict(last_game_state)
 	curr_game_state = last_game_state
@@ -217,7 +217,7 @@ func save_game() -> void:
 	
 	GamesaveManager.save_dict(dict_to_save)
 
-func load_game_state_from_dict(game_state: Dictionary):
+func load_game_state_from_dict(game_state: Dictionary) -> void:
 	
 	state = State.PLAYER_MOVE
 	
@@ -258,7 +258,7 @@ func load_game_state_from_dict(game_state: Dictionary):
 	
 	#print(players)
 
-func get_curr_game_state_as_dict():
+func get_curr_game_state_as_dict() -> Dictionary:
 	
 	return {
 		'curr_player': curr_player,
@@ -288,7 +288,7 @@ func cells_array_into_dictionary_array(cells_arr: Array[Cell]) -> Array[Dictiona
 
 #region UI FUNCTIONS
 
-func _toggle_pause():
+func _toggle_pause() -> void:
 	_set_paused(not paused)
 
 func _set_paused(value: bool) -> void:

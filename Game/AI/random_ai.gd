@@ -5,7 +5,7 @@ func your_turn(game_state: Dictionary, player_id: int) -> int:
 	
 	while(true):
 		
-		var i = randi_range(0, game_state.cells.size()-1)
+		var i: int = randi_range(0, game_state.cells.size()-1)
 		
 		var cell: Dictionary = game_state.cells[i]
 		

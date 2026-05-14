@@ -49,7 +49,7 @@ func _ready() -> void:
 	else:
 		$RecoverUnfinishedGameButton.hide()
 
-func _show_unfinished_game_panel():
+func _show_unfinished_game_panel() -> void:
 	$UnfinishedGamePanel.show()
 
 #region UNUSED FEATURES

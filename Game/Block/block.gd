@@ -45,7 +45,7 @@ func add_to_cell(cell: Cell) -> void:
 	get_parent().remove_child(self)
 	cell.add_block(self)
 
-func set_player(player_id: int):
+func set_player(player_id: int) -> void:
 	
 	#print("============================================================================")
 	#print("current player: " + str(player))

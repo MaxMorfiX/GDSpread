@@ -15,11 +15,11 @@ func load_dict(filepath: String = default_filepath) -> Dictionary:
 		print("Trying to load a missing savefile! Returning empty dictionary")
 		return {}
 	
-	var save_game = FileAccess.open(filepath, FileAccess.READ)
-	var json_string = save_game.get_as_text()
+	var save_game: FileAccess = FileAccess.open(filepath, FileAccess.READ)
+	var json_string: String = save_game.get_as_text()
 	
-	var json = JSON.new()
-	var error = json.parse(json_string)
+	var json: JSON = JSON.new()
+	var error: Error = json.parse(json_string)
 	
 	if error == OK:
 		return json.data

@@ -8,7 +8,7 @@ var tutorial_phrases: Array[String] = [
 ]
 
 var was_first_cell_exploded: bool = false
-var was_first_cell_exploded_triggered = false
+var was_first_cell_exploded_triggered: bool = false
 
 @onready var hint_label: RichTextLabel = $BackgroundColorRect/HintLabel
 
