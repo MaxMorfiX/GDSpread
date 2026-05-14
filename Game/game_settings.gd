@@ -51,7 +51,7 @@ func create_players(count: int) -> Array[Player]:
 	
 	var color: Color = generate_player_color(count-1, count)
 		
-	plrs.push_back(Player.new(color, AI.new()))
+	plrs.push_back(Player.new(color, Random_AI.new()))
 		
 	return plrs
 
